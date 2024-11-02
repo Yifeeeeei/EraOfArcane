@@ -2,23 +2,34 @@ var baseDiv;
 var frameDiv;
 var docDiv;
 var composerBase = "https://yifeeeeei.github.io/ArcaneComposer/";
+
+function deactiveElement(element) {
+    if (element.classList.contains("active")) {
+        element.classList.remove("active");
+    }
+}
+function activeElement(element) {
+    if (!element.classList.contains("active")) {
+        element.classList.add("active");
+    }
+}
+
 function showBase() {
-    baseDiv.style.display = "block";
-    frameDiv.style.display = "none";
-    docDiv.style.display = "none";
+    activeElement(baseDiv);
+    deactiveElement(frameDiv);
+    deactiveElement(docDiv);
 }
 
 function showFrame() {
-    baseDiv.style.display = "none";
-    frameDiv.style.display = "block";
-    docDiv.style.display = "none";
+    deactiveElement(baseDiv);
+    activeElement(frameDiv);
+    deactiveElement(docDiv);
 }
 
 function showDoc() {
-    baseDiv.style.display = "block";
-    frameDiv.style.display = "none";
-    docDiv.style.display = "block";
-    docDiv.classList.add("show");
+    // deactiveElement(baseDiv);
+    // deactiveElement(frameDiv);
+    activeElement(docDiv);
 }
 
 function init() {

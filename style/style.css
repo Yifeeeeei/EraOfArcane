@@ -143,26 +143,24 @@
     transition: 0.3s;
 }
 #doc {
-    /* display: flex; */
     flex-direction: column;
     height: 100vh;
-    /* width: 100vw; */
     position: fixed;
-    left: 0;
+    visibility: hidden;
     top: 0;
     background-color: #000000;
-    opacity: 0.8;
-    box-shadow: -4px 0px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0.85;
+    transition: left 0.3s ease-in-out; /* Add transition for the sliding effect */
 }
 
 /* Title Section */
 #doc-title {
     padding: 20px;
-    /* background-color: #4a90e2; */
     color: #ffffff;
     text-align: center;
     font-size: 2em;
     font-weight: 600;
+    border-bottom: #848484 1px solid;
 }
 
 /* Content Section */
@@ -210,9 +208,8 @@
 @media (min-width: 768px) {
     #doc {
         width: 25vw;
-        position: fixed;
-        right: 0;
         top: 0;
+        left: -25vw;
     }
 }
 
@@ -220,8 +217,27 @@
 @media (max-width: 767px) {
     #doc {
         width: 100vw;
-        left: 0;
-        top: 0;
+        left: -100vw;
         position: fixed;
     }
+}
+#doc.active {
+    left: 0; /* Move into the viewport */
+}
+
+#base.active {
+    visibility: visible;
+}
+#base {
+    visibility: hidden;
+}
+
+#frame.active {
+    visibility: visible;
+}
+#frame {
+    visibility: hidden;
+}
+#doc.active {
+    visibility: visible;
 }
