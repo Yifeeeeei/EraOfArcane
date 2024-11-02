@@ -51,7 +51,7 @@ function showPremade(name) {
     }
     content += `<a target="_blank" href="${
         composerBase + "?code=" + premadeDoc[name].code
-    }">${premadeDoc[name].code}</a>`;
+    }">在ArcaneComposer查看</a>`;
     loadDoc(title, content);
 }
 
