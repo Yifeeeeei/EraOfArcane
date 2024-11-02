@@ -206,10 +206,10 @@
     border-radius: 4px;
 }
 
-/* Desktop view: one-third width on the right */
+/* Desktop view: when width is larger than height */
 @media (min-width: 768px) {
     #doc {
-        width: 25vw; /* One-third of the viewport width */
+        width: 25vw;
         position: fixed;
         right: 0;
         top: 0;
