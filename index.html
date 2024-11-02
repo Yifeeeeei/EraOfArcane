@@ -17,6 +17,18 @@
             <div id="markdown-content"></div>
             <div id="base-menu" class="menu"></div>
         </div>
+
+        <div id="doc">
+            <div id="doc-title"></div>
+            <div id="doc-content"></div>
+
+            <div class="menu">
+                <ul class="absolute-item" onclick="backToBase()">
+                    返回
+                </ul>
+            </div>
+        </div>
+
         <div id="frame" display="block">
             <iframe src="" frameborder="0" id="iframe"></iframe>
             <div class="menu">
@@ -25,6 +37,7 @@
                 </ul>
             </div>
         </div>
+        <script src="./script/config.js"></script>
         <script src="./script/main.js"></script>
     </body>
 </html>

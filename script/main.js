@@ -1,82 +1,55 @@
-const configs = {
-    guide: {
-        name: "游玩指南",
-        id: "guide",
-
-        function: function () {
-            toggleSubMenu("guide-submenu"); // Toggle sub-items for this menu
-        },
-        subItems: {
-            deckBuild: {
-                name: "卡组构筑",
-                function: function () {
-                    jumpToOther("https://yifeeeeei.github.io/ArcaneComposer/");
-                },
-            },
-            ttsMod: {
-                name: "TTS模组",
-                function: function () {
-                    jumpToOther(
-                        "https://steamcommunity.com/sharedfiles/filedetails/?id=3155709993"
-                    );
-                },
-            },
-        },
-    },
-    story: {
-        name: "背景故事",
-        id: "story",
-        function: function () {
-            toggleSubMenu("story-submenu"); // Toggle sub-items for this menu
-        },
-        subItems: {
-            mermaid: {
-                name: "人鱼的故事",
-                function: function () {
-                    jumpHere("htmls/Mermaid.html");
-                },
-            },
-            Fire: {
-                name: "烈火之门派",
-                function: function () {
-                    jumpHere("htmls/Fires.html");
-                },
-            },
-            Dawn: {
-                name: "破晓",
-                function: function () {
-                    jumpHere("htmls/Dawn.html");
-                },
-            },
-            Storm: {
-                name: "风暴之城",
-                function: function () {
-                    jumpHere("htmls/Storm.html");
-                },
-            },
-        },
-    },
-};
-
 var baseDiv;
 var frameDiv;
+var docDiv;
+var composerBase = "https://yifeeeeei.github.io/ArcaneComposer/";
 function showBase() {
     baseDiv.style.display = "block";
     frameDiv.style.display = "none";
+    docDiv.style.display = "none";
 }
 
 function showFrame() {
     baseDiv.style.display = "none";
     frameDiv.style.display = "block";
+    docDiv.style.display = "none";
+}
+
+function showDoc() {
+    baseDiv.style.display = "block";
+    frameDiv.style.display = "none";
+    docDiv.style.display = "block";
+    docDiv.classList.add("show");
 }
 
 function init() {
     baseDiv = document.getElementById("base");
     frameDiv = document.getElementById("frame");
+    docDiv = document.getElementById("doc");
     console.log(baseDiv);
     console.log(frameDiv);
+    console.log(docDiv);
     showBase();
     prepareMenuItems();
+}
+
+function showPremade(name) {
+    var title = premadeDoc[name].title;
+    var content = "";
+    for (var i = 0; i < premadeDoc[name].content.length; i++) {
+        content += "<p>" + premadeDoc[name].content[i] + "</p>";
+    }
+    content += `<a target="_blank" href="${
+        composerBase + "?code=" + premadeDoc[name].code
+    }">${premadeDoc[name].code}</a>`;
+    loadDoc(title, content);
+}
+
+function loadDoc(title, content) {
+    var docTitle = document.getElementById("doc-title");
+    var docContent = document.getElementById("doc-content");
+    docTitle.innerHTML = title;
+    docContent.innerHTML = content;
+    showDoc();
 }
 
 function loadFrame(path) {
@@ -98,6 +71,10 @@ function jumpHere(path) {
 
 function backToBase() {
     showBase();
+}
+
+function jumpToPremade(deckCode) {
+    jumpToOther("https://yifeeeeei.github.io/ArcaneComposer/?code=" + deckCode);
 }
 
 function prepareMenuItems() {

@@ -1,3 +1,7 @@
+* {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
 #background_img {
     /* set the background image */
     /* fill the entire screen */
@@ -137,4 +141,87 @@
     background-color: white;
     color: black;
     transition: 0.3s;
+}
+#doc {
+    /* display: flex; */
+    flex-direction: column;
+    height: 100vh;
+    /* width: 100vw; */
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #000000;
+    opacity: 0.8;
+    box-shadow: -4px 0px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title Section */
+#doc-title {
+    padding: 20px;
+    /* background-color: #4a90e2; */
+    color: #ffffff;
+    text-align: center;
+    font-size: 2em;
+    font-weight: 600;
+}
+
+/* Content Section */
+#doc-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    color: #ffffff;
+    line-height: 1.6;
+    font-size: 1.1em;
+    overflow: auto;
+}
+
+/* Optional styles for content */
+#doc-content p {
+    margin-bottom: 1em;
+}
+
+#doc-content ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+#doc-content img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+/* Scrollbar styling */
+#doc-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+#doc-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#doc-content::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+}
+
+/* Desktop view: one-third width on the right */
+@media (min-width: 768px) {
+    #doc {
+        width: 25vw; /* One-third of the viewport width */
+        position: fixed;
+        right: 0;
+        top: 0;
+    }
+}
+
+/* Mobile view: full width */
+@media (max-width: 767px) {
+    #doc {
+        width: 100vw;
+        left: 0;
+        top: 0;
+        position: fixed;
+    }
 }
