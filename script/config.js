@@ -1,12 +1,18 @@
 const configs = {
     guide: {
-        name: "游玩指南",
+        name: "常用工具",
         id: "guide",
 
         function: function () {
             toggleSubMenu("guide-submenu"); // Toggle sub-items for this menu
         },
         subItems: {
+            rules: {
+                name: "游戏规则",
+                function: function () {
+                    jumpToOther("htmls/rules/rules.html");
+                },
+            },
             deckBuild: {
                 name: "构筑卡组",
                 function: function () {
