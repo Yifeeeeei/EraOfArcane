@@ -9,6 +9,21 @@
     </head>
 
     <body>
+        <script>
+            function adjustViewportHeight() {
+                // Get the actual height of the content
+                const contentHeight = document.documentElement.scrollHeight;
+                // Update the viewport meta tag with the calculated height
+                const metaTag = document.querySelector('meta[name="viewport"]');
+                metaTag.setAttribute(
+                    "content",
+                    `width=device-width, height=${contentHeight}px, initial-scale=1.0`
+                );
+            }
+
+            // Run on load
+            window.addEventListener("load", adjustViewportHeight);
+        </script>
         <div id="base" display="none">
             <div id="background_img"></div>
             <div id="background_shader"></div>
