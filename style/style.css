@@ -11,7 +11,7 @@
     width: 100%;
     height: 100%;
     /* center the image */
-    background-image: url("../images/bg.webp");
+    /* background-image: url("../images/bg.webp"); */
     background-size: cover;
     background-position: center;
     /* make the image darker */

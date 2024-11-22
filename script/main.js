@@ -32,6 +32,23 @@ function showDoc() {
     activeElement(docDiv);
 }
 
+function setBackgroundImage() {
+    var bgDiv = document.getElementById("background_img");
+    // set the background image
+    bgImageList = [
+        "url('./images/none.jpg')",
+        "url('./images/air.jpg')",
+        "url('./images/dark.webp')",
+        "url('./images/light.webp')",
+        "url('./images/fire.png')",
+        "url('./images/earth.webp')",
+        "url('./images/water.webp')",
+    ];
+
+    bgDiv.style.backgroundImage =
+        bgImageList[Math.floor(Math.random() * bgImageList.length)];
+}
+
 function init() {
     baseDiv = document.getElementById("base");
     frameDiv = document.getElementById("frame");
@@ -39,6 +56,7 @@ function init() {
     console.log(baseDiv);
     console.log(frameDiv);
     console.log(docDiv);
+    setBackgroundImage();
     showBase();
     prepareMenuItems();
 }
