@@ -105,6 +105,12 @@ const configs = {
                     jumpHere("htmls/Storm.html");
                 },
             },
+            Knight: {
+                name: "光辉骑士",
+                function: function () {
+                    jumpHere("htmls/Knight.html");
+                },
+            },
         },
     },
 };

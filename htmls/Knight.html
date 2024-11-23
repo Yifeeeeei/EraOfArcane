@@ -1,0 +1,594 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.428571; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-size-adjust: inherit; font-kerning: inherit; font-variant-alternates: inherit; font-variant-ligatures: inherit; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-variant-position: inherit; font-variant-emoji: inherit; font-feature-settings: inherit; font-optical-sizing: inherit; font-variation-settings: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; border-right-style: none; border-right-color: currentcolor; background-color: inherit; }
+.CodeMirror-linenumber { -webkit-user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: medium; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: medium !important; border-style: none !important; border-color: currentcolor !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; border-bottom-style: none; border-bottom-color: currentcolor; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: medium; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left-width: 0.25em; border-left-style: solid; border-left-color: rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext);
+
+/* cyrillic-ext */
+/* cyrillic */
+:root {
+	--window-border: none;
+	--typora-center-window-title: true;
+	--active-file-bg-color: #f3f3f3;
+	--bg-color: #fcfcfc;
+	--control-text-color: #777;
+}
+
+.mac-seamless-mode #typora-sidebar {
+	top: 20px;
+	padding-top: 0;
+	height: auto;
+}
+
+html,
+body,
+#write{
+	background: #fcfcfc;
+	background: var(--bg-color);
+	font-family: 'TeXGyreAdventor', "Century Gothic", "Didact Gothic", 'Segoe UI Emoji', sans-serif;
+	font-weight: 300;
+	-webkit-font-smoothing: antialiased;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: #111;
+	font-family: 'TeXGyreAdventor', "Century Gothic", "Didact Gothic", sans-serif;
+}
+
+html {
+	font-size:16px;
+}
+
+#write {
+	max-width: 914px;
+	text-align: justify;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+#write>h1:first-child {
+	margin-top: 2.75rem;
+}
+#write>h2:first-child {
+	margin-top: 1.75rem;
+}
+#write>h3:first-child {
+	margin-top: 1rem;
+}
+#write>h4:first-child {
+	margin-top: 0.5rem;
+}
+h1 {
+	font-weight: normal;
+	line-height: 4rem;
+	margin: 0 0 1.75rem;
+	padding: 20px 30px;
+	text-align: center;
+	text-transform: uppercase;
+	margin-top: 4rem;
+}
+h2 {
+	font-weight: normal;
+	line-height: 3rem;
+	margin: 0 0 1.9375rem;
+	padding: 0 30px;
+	text-align: center;
+	text-transform: uppercase;
+	margin-top: 3rem
+}
+h3 {
+	font-weight: normal;
+}
+h4 {
+	font-weight: normal;
+}
+h5 {
+	font-size: 1.125rem;
+	font-weight: normal;
+}
+h6 {
+	font-size: 1rem;
+	font-weight: bold;
+}
+p {
+	color: #111;
+	font-size: 1rem;
+	line-height: 1.75rem;
+	margin: 0 0 1.25rem;
+}
+#write>h3.md-focus:before {
+	left: -1.875rem;
+	top: 0.5rem;
+	padding: 2px;
+}
+#write>h4.md-focus:before {
+	left: -1.875rem;
+	top: 0.3125rem;
+	padding: 2px;
+}
+#write>h5.md-focus:before {
+	left: -1.875rem;
+	top: 0.25rem;
+	padding: 2px;
+}
+#write>h6.md-focus:before {
+	left: -1.875rem;
+	top: .125rem;
+	padding: 2px;
+}
+@media screen and (max-width: 48em) {
+	blockquote {
+		margin-left: 1rem;
+		margin-right: 0;
+		padding: 0.5em;
+	}
+	.h1,
+	h1 {
+		font-size: 2.827rem;
+	}
+	.h2,
+	h2 {
+		font-size: 1.999rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.413rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+}
+a,
+.md-def-url {
+	color: #990000;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+table {
+	margin-bottom: 20px
+}
+table th,
+table td {
+	padding: 8px;
+	line-height: 1.25rem;
+	vertical-align: top;
+	border-top: 1px solid #ddd
+}
+table th {
+	font-weight: bold
+}
+table thead th {
+	vertical-align: bottom
+}
+table caption+thead tr:first-child th,
+table caption+thead tr:first-child td,
+table colgroup+thead tr:first-child th,
+table colgroup+thead tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td {
+	border-top: 0
+}
+table tbody+tbody {
+	border-top: 2px solid #ddd
+}
+code, .md-fences {
+	padding: .5em;
+	/*background: #f0f0f0;*/
+	border: 1px solid #ccc;
+	padding: .1em;
+	font-size: 0.9em;
+	margin-left: 0.2em;
+	margin-right: 0.2em;
+}
+.md-fences {
+	margin: 0 0 20px;
+	font-size: 1em;
+	padding: 0.3em 1em;
+  	padding-top: 0.4em;
+}
+.task-list{
+	padding-left: 0;
+}
+
+.task-list-item {
+	padding-left:2.125rem;
+}
+
+input {
+	border-style: ridge;
+}
+
+.task-list-item input {
+	top: 3px;
+}
+
+.md-task-list-item input {
+	margin-left: -1.5em;
+}
+
+.task-list-item input:before {
+	content: "";
+	display: inline-block;
+	width: 1rem;
+	height: 1rem;
+	vertical-align: middle;
+	text-align: center;
+	border: 1px solid gray;
+	background-color: #fdfdfd;
+	margin-left: 0;
+	-webkit-appearance: none;
+	margin-top: -1rem;
+}
+
+.typora-node .task-list-item input:before {
+	top: 0.3ex;
+	position: absolute;
+}
+
+.task-list-item input:checked:before,
+.task-list-item input[checked]:before{
+	content: '\25FC';
+	/*◘*/
+	font-size: 0.8125rem;
+	line-height: 0.9375rem;
+}
+
+/* Chrome 29+ */
+.task-list-item input:before {
+	margin-top: -0.2rem;
+}
+
+.task-list-item input:checked:before,
+.task-list-item input[checked]:before {
+	margin-top: -0.2rem;
+}
+
+.html-for-mac .task-list-item input:checked:before,
+.html-for-mac .task-list-item input[checked]:before {
+	margin-top: -0.8rem;
+}
+
+blockquote {
+	margin: 0 0 1.11111rem;
+	padding: 0.5rem 1.11111rem 0 1.05556rem;
+	border-left: 1px solid gray;
+}
+blockquote,
+blockquote p {
+	line-height: 1.6;
+	color: #6f6f6f;
+}
+#write pre.md-meta-block {
+	min-height: 30px;
+	background: #f8f8f8;
+	padding: 1.5em;
+	font-weight: 300;
+	font-size: 1em;
+	padding-bottom: 1.5em;
+	padding-top: 3em;
+    margin-top: -1.5em;
+	color: #999;
+	
+	width: 100vw;
+	max-width: calc(100% + 60px);
+	margin-left: -30px;
+	border-left: 30px #f8f8f8 solid;
+	border-right: 30px #f8f8f8 solid;
+}
+.MathJax_Display {
+	font-size: 0.9em;
+	margin-top: 0.5em;
+	margin-bottom: 0;
+}
+p.mathjax-block,
+.mathjax-block {
+	padding-bottom: 0;
+}
+.mathjax-block>.code-tooltip {
+	bottom: 5px;
+	box-shadow: none;
+}
+.md-image>.md-meta {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+.md-image>img {
+	margin-top: 2px;
+}
+.md-image>.md-meta:first-of-type:before {
+	padding-left: 4px;
+}
+
+#typora-source {
+	color: #555;
+}
+
+/** ui for windows **/
+#md-searchpanel {
+    border-bottom: 1px solid #ccc;
+}
+
+#md-searchpanel .btn {
+    border: 1px solid #ccc;
+}
+
+#md-notification:before {
+	top: 14px;
+}
+
+#md-notification {
+	background: #eee;
+}
+
+.megamenu-menu-panel .btn {
+	border: 1px solid #ccc;
+}
+
+#typora-sidebar {
+	box-shadow: none;
+}
+
+.file-list-item ,
+.show-folder-name .file-list-item {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	line-height: 20px;
+}
+
+.file-list-item-summary {
+	height: 40px;
+	line-height: 20px;
+}
+
+.ty-table-edit {
+	background: #ededed;
+}
+
+.dropdown-menu .divider {
+	border-color: #e5e5e5;
+}
+
+ @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>光辉骑士</title>
+</head>
+<body class='typora-export typora-export-show-outline typora-export-no-collapse-outline'><div class='typora-export-content'>
+<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#序章">序章</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#第一章">第一章</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#第二章">第二章</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#第三章">第三章</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#第四章">第四章</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#尾声">尾声</a></div><ul class="outline-children"></ul></li></div></div><div id='write'  class=''><h1 id='序章'><span>序章</span></h1><p><span>风啸声撕裂了荒芜的战场，像利刃切过破旧的旗帜。天空灰蒙蒙的，浓厚的乌云盘旋不去，仿佛预示着某种压迫的降临。腐臭的气息夹杂着血腥味四散开来，冷风刮过，翻起地面上的残破盔甲与浸透血污的碎布条。</span></p><p><span>蕾曦娅手握长矛，站在战场的中央，目光锁定在前方那个模糊的身影上。一名高大的骑士大，动作僵硬，破裂的盔甲挂满黑色的藤蔓般的腐化痕迹。他的手中握着一把巨剑，剑刃闪着寒光，但那光并非圣洁，而是混杂着令人作呕的黑色涟漪。</span></p><p><span>她曾经的战友，也是她最信任的人。</span></p><p><span>但这早已经不是她认识的那个人了。他的躯体被黑暗侵蚀得扭曲，双眼中闪烁着诡异的黑光。他的每一次移动都伴随着藤蔓般的腐化气息，脚下的土地枯萎成灰。他的喉间发出一声低沉的嘶吼，像挣扎中的野兽，但他的声音却带着不容忽视的哀求：</span></p><p><span>“蕾曦娅...”破碎而痛苦的声音，像从深渊里传来，“结束这一切…我…不能继续下去了…”</span></p><p><span>“为什么会变成这样...”她低声喃喃，声音几乎被风掩盖。</span></p><p><span>骑士没有回答。他抬起了巨剑，剑刃划过空气，发出尖锐的啸声，直逼蕾曦娅的方向而来。那一瞬间，她下意识地后退一步，长矛横在身前，护住自己。可是她的动作慢了一瞬，剑锋擦着她的肩甲而过，留下深深的划痕。</span></p><p><span>“战斗！”骑士的声音变得低沉而嘶哑，“不要犹豫，蕾曦娅！你若再迟疑，只会让更多人死！”</span></p><p><span>这句话如同重锤般砸在蕾曦娅的心上。她的脑海中闪过无数画面——那些曾经站在她身边的战友，那些坚强的脸庞，一个接一个被黑暗吞噬，而她每一次的犹豫，都让他们离死亡更近一步。</span></p><p><span>骑士的动作顿了一瞬，剑刃在空中停滞了一秒。但这只是短暂的停顿，他眼中的黑光愈发浓烈，仿佛吞噬了他最后的一丝清明。他低吼一声，举起巨剑，力量猛然爆发，冲向蕾曦娅。</span></p><p><span>这一次，蕾曦娅没有后退，矛尖精准地刺入骑士的胸膛。</span></p><p><span>骑士僵住了，手中的巨剑无力地垂下。他的目光变得柔和，嘴角浮现出一抹苦涩的笑意。</span></p><p><span>“谢谢你...”他的声音轻得像风中的低语。</span></p><p><span>黑暗的力量从他的胸口溢出，如烟雾般消散在空气中。他的身体逐渐崩解，化作灰烬，随风飘散。那是曾经的战友留下的最后痕迹。</span></p><p><span>蕾曦娅站在原地，手中的长矛垂下，染满了血迹。</span></p><h1 id='第一章'><span>第一章</span></h1><p><span>冰冷的水流无情地裹挟着蕾曦娅，将她的身体翻滚着拖入暗河深处。湍急的水流撞击在石壁上，发出低沉的轰鸣，似乎在嘲笑她的无力挣扎。血液从她被刺穿的伤口涌出，在冰冷的水中绽开如暗红的花朵。</span></p><p><span>她试图抓住什么，却被水流一次又一次拍回漆黑的深渊。疼痛灼烧着她的神经，胸口如同有一团烈火在燃烧，但更多的，是一种熟悉的绝望。</span></p><p><span>她必须保持神志清醒，她努力将自己的意识聚焦到什么事情上，去思考一些什么。</span></p><p><span>这一切，该从哪里说起？</span></p><hr /><p><span>火红的夕阳穿透森林枝桠，将光影洒在地面上，但这片森林早已死寂无声。空气中弥漫着腐败的气息，干枯的树叶铺满地面，踩上去发出轻微的嘎吱声。蕾曦娅手握短弓，目光如鹰隼般锐利，扫视着前方的灌木丛。</span></p><p><span>她的脚步极轻，像一只潜伏的猎豹，每一步都小心翼翼。空气中传来沉重的呼吸声和撕裂肉体的声音，她缓缓靠近，拨开灌木，看到一头腐化的魔物正低头啃食着一具动物的尸体。</span></p><p><span>那魔物形似狼，但比普通的狼大了几倍，全身布满扭曲的黑刺，眼中闪烁着不祥的红光。它的嘴巴咬下尸体的血肉，发出令人作呕的咀嚼声。</span></p><p><span>蕾曦娅屏住呼吸，举起弓箭，拉弦的动作轻盈而迅速。箭矢离弦，穿透空气，精准地插入魔物的喉咙。那头魔物发出一声尖利的惨叫，试图转身扑向她，却只挣扎了两步，便轰然倒地，黑血溅满地面。</span></p><p><span>她缓步上前，确认魔物断气后，低头拔出箭矢。黑色的血液沿着箭身滴落，散发着腐臭的味道。她抬头环顾四周，确保没有其他威胁后，将箭矢插回箭袋。</span></p><p><span>但这份宁静只持续了片刻。远处的树林中传来一阵嘈杂的声音，金属的碰撞声和魔物的嘶吼夹杂着怒吼，打破了森林的死寂。</span></p><p><span>蕾曦娅迅速收起弓箭，取出匕首，向声源处靠近。</span></p><hr /><p><span>她穿过密林，来到一片开阔的空地，视线瞬间锁定了正在战斗的一对身影。一名年轻的骑士正与一头巨大的腐化魔物缠斗。他的盔甲染满血迹，动作显得急躁且略有些笨拙。他的长剑砍在魔物的甲壳上，火星四溅，却无法击破它的防御。</span></p><p><span>魔物的形态更为可怖，巨大的身体覆盖着漆黑的鳞片，尾部如铁鞭般横扫，击中了年轻骑士的护盾，将他撞飞数米。他摔倒在地，痛苦地喘息着，试图爬起身来。</span></p><p><span>“快逃！别硬拼！”蕾曦娅的声音从阴影中传来，带着一丝冷意。</span></p><p><span>年轻骑士愣了一瞬，但随即握紧长剑，继续向魔物冲去，似乎完全没有听进去她的警告。他的剑刃再次劈向魔物，却被其巨爪挡住，火星飞溅间，他再次被击倒在地。</span></p><p><span>蕾曦娅低声咒骂了一句，举起弓箭，一箭射向魔物的后腿。箭矢精准命中，魔物的动作被迫停顿了一瞬。抓住这个时机，蕾曦娅如猎豹般冲上前，长矛横扫，在魔物的腹部划出一道深深的裂口。</span></p><p><span>魔物发出一声尖锐的哀嚎，巨大的身体轰然倒地，挣扎了片刻，便失去了生机。</span></p><p><span>年轻的骑士喘着粗气，从地上撑起身，目光复杂地看向蕾曦娅。他的脸庞显得稚嫩，甚至带着几分腼腆：“谢谢你……如果不是你，我可能已经死了。”</span></p><p><span>蕾曦娅冷冷地扫了他一眼，没有回应，只是蹲下检查魔物的尸体，确保它彻底断气。</span></p><p><span>“我是艾尔文，光明骑士团的一员。准确来说，刚刚加入。”年轻骑士显然不打算就此闭嘴，他挠了挠头，“呃……如果我没看错的话，你也曾是光辉骑士吧？”</span></p><p><span>蕾曦娅的动作停了一瞬，她的目光掠过自己手中的长矛，那上面的雕文早已被鲜血与尘土掩盖，但依稀能看出光辉骑士的标志。</span></p><p><span>“你认错人了。”她低声说道，语气冷漠，起身转身离开。</span></p><p><span>“等等！”艾尔文追了上来，语气中带着几分恳求，“我们的队伍在附近…你愿意和我们一起走吗？呃，如果方便的话，也许可以帮帮我们，毕竟……”</span></p><p><span>蕾曦娅停下脚步，侧过头冷冷地看着他：“我说过，我不是骑士团的人。”</span></p><p><span>“但你救了我。”艾尔文咬了咬牙，继续说道，“我们团长一定会想见你，我们需要你这样的战士。”</span></p><p><span>蕾曦娅沉默片刻，最终叹了口气：“带路。”</span></p><hr /><p><span>夜色愈深，森林营地的篝火在寒风中微微摇曳，映出骑士们疲惫的剪影。低语声逐渐散去，只剩下木柴燃烧的噼啪声与树叶摇曳的低吟，仿佛整个世界都在屏息聆听。</span></p><p><span>蕾曦娅坐在篝火旁，默默擦拭着长矛。她的动作机械而熟练，目光冷淡如霜，像深冬里凝结的寒冰。尽管周围的怀疑和低语早已司空见惯，但这一刻，她的眉宇间浮现一丝隐隐的烦躁。</span></p><p><span>脚步声从身后传来，打破了短暂的静谧。一个高大的身影从阴影中缓缓走出，斗篷的金线在火光下微微闪动。他的步伐沉稳，每一步都带着某种不容抗拒的威严。他走近后停下脚步，目光锐利得仿佛穿透了夜色。</span></p><p><span>“蕾曦娅。”他低沉地开口，语气冷静而笃定，仿佛宣告某种既定的事实。</span></p><p><span>她抬起头，眉头微蹙，目光直视着来人：“团长。”</span></p><p><span>讷什点了点头，随即在她对面坐下。他的目光停留在她手中的长矛上，平静中带着一丝探寻。</span></p><p><span>“听说你救了艾尔文。”他的声音里不带丝毫波动，语气轻描淡写，却透着难以忽视的压迫。</span></p><p><span>“只是顺手。”蕾曦娅回答得毫不在意，目光低垂，继续擦拭矛尖。</span></p><p><span>“顺手杀死一头腐化巨兽。”讷什低笑一声，“光辉骑士果然名不虚传。”</span></p><p><span>她依然没有回应，专注于手中的动作，仿佛在试图抹去长矛上并不存在的污痕。</span></p><p><span>讷什的笑意逐渐淡去，他微微前倾，语气忽然转冷：“是什么让你离开骑士团的？光辉骑士团从未背叛过你，你却放弃了它。”</span></p><p><span>蕾曦娅的手一顿，抬起头，目光冷冷地锁住他：“离开骑士团，不代表放弃光明。”</span></p><p><span>“是吗？”讷什扬起嘴角，露出一抹意味深长的笑容，“可光明保护了谁？保护了那些被腐化的战友，还是那些倒下的骑士？还是说, 它只保护了你。”</span></p><p><span>这句话如刀般刺入她的胸口。蕾曦娅的表情微微一变，冰冷的目光越发凌厉，却依旧没有回答。</span></p><p><span>讷什缓缓起身，俯视着她，低声说道：“这个世界的光明太脆弱了，蕾曦娅。光辉骑士团的信念不足以对抗黑暗，也不足以对抗这个世道的规则。”</span></p><p><span>蕾曦娅嗤笑一声，语气中透着讽刺：“规则？你指的是逃避责任和高谈力量？别兜圈子了。告诉我，你们来到这片森林的真正目的是什么？”</span></p><p><span>讷什沉默片刻，随即叹了一口气，仿佛不愿再掩饰。他的语气恢复了平静，但带着一种不可违逆的冷意：“黑暗正在侵蚀这片土地，腐化的力量在蔓延，城镇在崩塌，光明的力量正在消逝。但这一切都可以被逆转，只要我们这次行动能成功，找到珀伽索斯神殿。”</span></p><p><span>“珀伽索斯神殿？一个听上去就不靠谱的传说。”蕾曦娅冷冷地说，语气中带着一丝不屑，“又是那种虚无缥缈的故事。”</span></p><p><span>“并非虚无缥缈。”讷什目光凝重，“远古巫师的巫师曾将神殿的位置记录在了圣剑上，只要能得到圣剑，我们就能找到神殿。”</span></p><p><span>蕾曦娅抬起头：“真是容易了不少。”</span></p><p><span>讷什露出一抹微笑，缓缓站直身子。他右手伸入斗篷中，慢慢抽出一把剑。</span></p><p><span>那剑散发着淡淡的光芒，剑刃修长，线条优美，却不带一丝锐气。表面布满复杂的符文，随着火光微微闪烁。空气中弥漫着某种庄严而危险的气息。</span></p><p><span>“这不可能。”蕾曦娅的瞳孔微微收缩。</span></p><p><span>讷什将剑横在胸前，目光深沉如夜：“我从来不打没有把握的仗。”他把剑插回剑鞘中：“很可惜，这只是珀伽索斯一半的力量。远古的巫师们将珀伽索斯的躯体封印进了这个圣剑之中，但是它的灵魂依然在神殿中游荡。如果我们能够找到神殿，来恢复圣剑的全部力量，那么再也没有什么能够阻挡我们的。”</span></p><p><span>他的声音低沉，却带着一种不可撼动的力量：“只差最后一步，蕾曦娅。你加入吗？一个曾经的光辉骑士，如今却在当屠魔者糊口。这也不是你愿意做的吧？况且，我真是受够这帮新兵蛋子了，有个老手同行总归是更好的。”</span></p><p><span>火光在他的脸上跳动，他的轮廓隐于光影之间，带着一抹难以言喻的危险与诱惑。</span></p><p><span>蕾曦娅没有说话，目光紧锁在那把剑上，手指无意识地收紧，握住了自己的长矛。</span></p><h1 id='第二章'><span>第二章</span></h1><p><span>珀伽索斯神殿内部充满了幽暗与未知，符文闪烁的光芒在墙壁上跳跃，仿佛在无声地诉说着这片遗迹的危险。讷什站在主厅中央，举起手中的圣剑，剑身微弱的光辉指引着一个隐秘的方向。</span></p><p><span>“祭坛不可能被轻易找到。”讷什低声说道，目光扫过众人，“这座神殿复杂且危机四伏。我们必须分头行动，尽快锁定它的位置。”</span></p><p><span>艾尔文抬头问道：“那谁和谁一组？”</span></p><p><span>讷什的目光转向蕾曦娅，唇边浮现出一抹淡淡的笑意：“蕾曦娅，你跟我一起走。”</span></p><p><span>蕾曦娅皱了皱眉，没有反对，但她冰冷的目光显然透着几分警惕：“随你。”</span></p><hr /><p><span>蕾曦娅和讷什沿着神殿深处的通道前行，两人一前一后，脚步回荡在幽暗的空间里。讷什走在前方，手中的圣剑散发出微弱的光芒，指引他们穿过层层机关与陷阱。</span></p><p><span>“你为什么退出骑士团？”讷什忽然问道，语气平静，却隐藏着某种深意。</span></p><p><span>蕾曦娅没有回答。</span></p><p><span>“这一次，我一定要得到这个答案。请你不要默不作声。”讷什说道。</span></p><p><span>蕾曦娅的目光扫过两旁的壁画，那些画面描绘着光明与黑暗的永恒战争。“我曾经认为我会毫不犹豫地选择光明，每一次都是。但是现实远比我想象的艰难。”</span></p><p><span>“艰难？”讷什轻笑了一声，目光依然注视着前方，“哪里艰难？在我看来，只有能与不能的分别。”</span></p><p><span>“远不止能与不能的区别。”蕾曦娅毫不客气地反驳，手中的长矛紧了紧。她继续说道：“当你看到曾经在自己身边的战斗被黑暗腐化，向你请求给他们一个痛快的时候，这还是一个能与不能的问题吗？纵然我可以轻松击败他们，我又怎能痛下杀手。”</span></p><p><span>“很有意思。”讷什忽然停下脚步，转身看着她，目光复杂而冰冷，“我以前确实以为你退出骑士团和黑暗的腐化有关系，但我没有想到是这个原因。”</span></p><p><span>蕾曦娅冷冷地瞪着讷什：“你现在放心了？”</span></p><p><span>讷什嘴角微微扬起：“也许吧。”</span></p><hr /><p><span>继续向前，空气中隐隐传来水流的声音。通道的尽头，豁然开朗，一个巨大的地下空洞展现在两人面前。漆黑的暗河环绕着祭坛，河水涌动间，散发着难以形容的幽光。祭坛静静矗立在河中央，通向它的石桥已然破损，仅剩下几块摇摇欲坠的石板。</span></p><p><span>“看来我们找到了。”讷什低声说道，目光深邃地注视着祭坛，“圣剑的力量会在这里复苏。”讷什抬起圣剑，剑身的符文光芒逐渐亮起，与祭坛上的符文形成了共鸣。</span></p><p><span>蕾曦娅站在摇摇欲坠的石桥上，目光落在下方翻涌的暗河上。河水如黑色的绸带，在岩石之间回旋激荡，发出沉闷的咆哮声。她缓缓呼出一口气，手中的长矛垂下，寒光在微弱的光线中一闪而逝。</span></p><p><span>“冒险终于快结束了。”她在心中默默想着。讷什手握圣剑，世界上所有的黑暗将被清除，而她……或许将回到原本的生活，继续做一名无名的屠魔者。</span></p><p><span>突如其来的破空声打断了她的思绪。那一声风响，她再熟悉不过了——就像潜伏的魔物在背后偷袭，致命且精准。</span></p><p><span>她本能地向侧面一闪，动作迅捷如雷，手中长矛同时拔出，寒光如同划破夜幕的闪电。</span></p><p><span>圣剑擦着她的身侧劈下，剑气轰然击中石桥的边缘，爆发出一声震耳的巨响。石屑四溅，桥面瞬间裂开一道深深的痕迹。那痕迹并非普通的裂纹，而是被黑暗侵蚀的藤蔓般痕迹，沿着裂缝迅速扩散，仿佛整个桥面都被这股邪异的力量腐蚀。</span></p><p><span>“原来如此”蕾曦娅冷冷开口，握紧长矛，冰冷的目光直指面前的讷什，“你的那些问题不过是试探，你早就被黑暗腐化了。”</span></p><p><span>讷什缓缓抬起头，脸上的表情冷酷而淡漠，圣剑在他手中微微震颤，剑身上盘踞的黑暗仿佛有生命般蠕动着。</span></p><p><span>“我原以为我们是一路人。”讷什低声说道，声音中透着无尽的寒意，“但显然，你还停留在那些过时的信念中。看来……我们必须了结这段关系了。”</span></p><p><span>没有更多的言语，两人几乎同时动了。蕾曦娅的长矛闪电般刺出，寒光撕裂空气，而讷什的圣剑挥出一道浓烈的黑光，与矛尖的寒芒轰然相撞。</span></p><p><span>火花四溅，黑暗与光明交织的较量在狭窄的石桥上拉开了帷幕。</span></p><p><span>讷什的剑技凌厉而精准，每一剑都直指要害，带着圣剑未彻底觉醒却依然强大的力量。他的剑锋每一次挥动，都掀起一阵压迫性的气流，将石桥上的灰尘震得四散。</span></p><p><span>然而，蕾曦娅并不退缩。她的长矛每一次挥动都精准无比，像舞动的银蛇，既灵动又充满攻击性。她以矛杆的灵活性与讷什的剑力周旋，时而刺出，时而挑开圣剑的剑锋，脚步轻盈得仿佛踏在虚空中。</span></p><p><span>讷什的一剑劈下，被蕾曦娅的矛尖猛然拨开，黑光在她的长矛上滑过，直直砸向桥面的石板，溅起一片碎石。蕾曦娅顺势前冲，矛尖以迅雷之势直指讷什的胸口。</span></p><p><span>圣剑再次被她震飞，重重落在祭坛的一侧，发出清脆的撞击声。</span></p><p><span>“结束了，讷什。”蕾曦娅的声音冰冷，长矛停在他胸口不足一寸的地方，“别再挣扎了。放下你的野心，还有回头的机会。”</span></p><p><span>讷什垂下头，盯着自己胸口近在咫尺的矛尖，嘴角忽然扬起了一抹淡淡的笑意。他的笑容带着嘲讽与悲凉，仿佛是在看一个天真的孩子。</span></p><p><span>“回头？”他的声音低沉而冰冷，眼神中透着不屑，“我早已没有回头的路。而你——依然在犹豫。”</span></p><p><span>蕾曦娅微微一怔，她的手握紧长矛，却没有刺下。</span></p><p><span>讷什抓住了这一瞬间的空隙。他的手猛然一挥，一道阴影从祭坛处飞掠而来，直奔他的掌心——圣剑再次落入他的手中，黑暗的力量猛然爆发。</span></p><p><span>蕾曦娅来不及反应，讷什的剑锋带着绝对的力量，划破她的防御，直直刺入她的胸膛。</span></p><p><span>剧痛如洪水般涌来。</span></p><p><span>蕾曦娅的双眼瞪大，鲜血从胸口涌出，染红了长矛的柄端。她的双手无力地松开长矛，身体摇晃着向后退去。</span></p><p><span>讷什缓缓靠近，手中的圣剑贯穿她的胸膛，冷冷地看着她，声音低沉而无情：“你总是在犹豫，而这，就是你失败的原因。”</span></p><p><span>他用力一推，蕾曦娅的身体向后跌入翻涌的暗河中。冰冷的水流瞬间吞没了她的身影，她的长矛滑落入深渊，寒光在河水中渐渐消失。</span></p><p><span>讷什站在石桥上，注视着暗河中逐渐平静的漩涡，低声喃喃道：“感谢你的牺牲，蕾曦娅。”</span></p><h1 id='第三章'><span>第三章</span></h1><p><span>是的，这就是之前发生的事情，她的意识从未无比清晰，为什么会这样。</span></p><p><span>暗河的水流缓缓平静，漆黑的水面映衬出一抹微弱的光芒。蕾曦娅的身体随波漂浮，冰冷的水流侵蚀着她的肌肤，胸口的刺痛像火焰般灼烧着她的意识。</span></p><p><span>一道纯白的光芒从河底升起，缓缓将她的身体托起。那光芒温暖而柔和，驱散了刺骨的寒意，像是一双无形的手，将她拉离深渊。</span></p><p><span>蕾曦娅猛然睁开双眼，目光模糊中看到自己正漂浮在暗河之上。一股难以言喻的力量环绕着她，那光芒从水面涌出，抚过她的胸膛。破裂的盔甲被光芒轻轻修复，冰冷的创伤逐渐愈合，伤口化作一道温暖的痕迹。</span></p><p><span>就在光芒最为耀眼之时，一个巨大的身影渐渐显现。那是一匹圣洁的巨兽，身躯残破，双翼垂落，但它周身的光辉依然纯净得让人无法直视。珀伽索斯低垂头颅，沉默地注视着蕾曦娅，目光深邃而威严。</span></p><p><span>蕾曦娅的呼吸微微一滞，她能感受到从珀伽索斯身上涌来的力量，那力量仿佛在低语，却无声。它没有言语，但她明白它的意图——光明从未离开，而她也不能放弃。</span></p><p><span>她的双手微微颤抖，紧握住漂浮在光辉中的长矛。矛身上的裂纹逐渐被圣光填补，流动的符文焕发出新的生命力。那一刻，蕾曦娅的内心被前所未有的坚定点燃，犹如被浇灌的火焰，越燃越烈。</span></p><p><span>“光明依然在，”她低声说道，目光逐渐变得清明，“而我，也不能倒下。”</span></p><p><span>珀伽索斯微微昂首，双翼轻轻一振，周围的光芒涌向蕾曦娅，将她的全身包裹。那光辉中蕴含着巨大的力量，驱散了她的疲惫，重塑了她的意志。它的形象随光芒渐渐隐没，最后一抹圣洁的辉光缓缓融入她的长矛之中。</span></p><p><span>暗河的波涛恢复了平静，光芒逐渐散去。蕾曦娅的双脚踏在冰冷的石地上，长矛在手，锋芒再现。她抬起头，目光如刀，刺穿面前的黑暗。</span></p><p><span>“光明永远不会向黑暗屈服。”她轻声说道，转身迈向通往祭坛的通道，“而我，也不会。”</span></p><hr /><p><span>当蕾曦娅再次接近祭坛时，空气中弥漫的气息已完全不同。曾经流转着圣洁符文光芒的墙壁，如今被扭曲的暗红色侵蚀。符文像伤口般在墙壁上闪烁，仿佛在低声哀鸣。腐败的气息扑面而来，令人作呕，仿佛整个神殿都在被黑暗吞噬。</span></p><p><span>她握紧长矛，脚步加快，心中升腾起一股不祥的预感。</span></p><p><span>祭坛大厅的门口，一些骑士正严阵以待。艾尔文站在队伍前方，他的盔甲虽沾满灰尘，但依然透着光辉骑士的气势。看到蕾曦娅出现，他的眼中浮现出浓浓的震惊。</span></p><p><span>“蕾曦娅！”他几乎脱口而出，“你还活着？讷什说……他说你背叛了我们，已经被他杀死了！”</span></p><p><span>蕾曦娅冷笑一声，长矛轻轻敲击地面，发出清脆的声响：“是吗？看来你们的‘团长’编造了一个好故事。事实是，他早已被黑暗腐化，而现在……让开，我要去结束这一切。”</span></p><p><span>艾尔文愣住了，他的目光掠过蕾曦娅坚毅的面庞，又回想起讷什最近愈发令人不安的举动，神情变得复杂而犹豫。</span></p><p><span>“那我们呢？”他低声问道，声音里透着迷茫，“我们……应该怎么做？”</span></p><p><span>蕾曦娅目光冷冽，语气中透出一丝不容置疑的坚定：“跑吧。黑暗的腐化不是你们能够对付的，相信我，我见过太多这样的场景。留在这里，只会送命。”</span></p><p><span>艾尔文咬紧牙关，身后的骑士们也低声交谈。但蕾曦娅已经转身推开大门，步入祭坛大厅，没有再多言。</span></p><hr /><p><span>祭坛大厅内的景象如同一场噩梦。</span></p><p><span>讷什站在祭坛中央，手握圣剑，剑身不再散发圣洁的光辉，而是被黑暗与红光侵染，符文疯狂跳动着，仿佛在嘲笑这片大地上的一切。圣剑正从珀伽索斯的残躯中吸取力量，鲜红的血迹沿着符文蔓延，滴入剑身，发出低沉的嗡鸣。</span></p><p><span>几名骑士站在讷什身后，他们的盔甲与武器已被黑暗吞噬，眼中燃烧着狂热的暗红光芒，宛如没有自我意识的傀儡。他们的呼吸粗重而急促，仿佛随时会发动攻击。</span></p><p><span>“你回来了。”讷什抬起头，目光冷冷地锁住蕾曦娅，嘴角扬起一抹不怀好意的笑容，“真是令人惊讶。看来暗河也没能带走你。”</span></p><p><span>“你的野心还没结束。”蕾曦娅平静地说道，长矛微微抬起，锋锐的矛尖直指讷什，“但这一次，我会终结它。”</span></p><p><span>“终结？”讷什轻轻摇头，发出一声嗤笑，仿佛听到一个天大的笑话。“蕾曦娅，你依然看不透这世界的本质。光明，黑暗，不过是同一枚硬币的两面。你无法终结力量，除非你愿意臣服于它。”</span></p><p><span>他缓缓举起圣剑，剑身爆发出刺目的红光，整个祭坛大厅笼罩在诡异的光辉中。他的声音低沉却充满力量：“而我，将是第一个真正掌控它的人。”</span></p><p><span>“掌控？”蕾曦娅冷笑，“不，你只是让自己被腐化。”</span></p><p><span>“腐化？”讷什轻轻摇头，眼中透着狂热的光芒，“那只是无知者的妄言。力量不需要道德的束缚，只有掌控它的人，才能决定这个世界的规则。而你——一个可怜的信徒——还在妄想用信念去对抗它。”</span></p><p><span>他抬起圣剑，向身后的几名骑士轻轻一挥：“来吧，光辉骑士的遗物，就由你们送她上路。”</span></p><p><span>几名被腐化的骑士发出低沉的嘶吼，向蕾曦娅缓缓逼近。他们的盔甲上流淌着黑暗的气息，每一步都让空气变得更加压抑。</span></p><p><span>讷什注视着这一切，脸上露出一抹冰冷的笑意：“蕾曦娅，当时我应该彻底杀死你。但现在，我很想知道，你一个人，如何对抗他们全部？”</span></p><p><span>蕾曦娅没有退缩。她握紧长矛，矛尖微微一震，荡开了逼近的黑暗气息。她低声道：“你低估了光明，也低估了我。”</span></p><p><span>就在此时，身后传来一声怒喝：“还有我们！”</span></p><p><span>蕾曦娅微微一怔，回头望去，艾尔文带着剩余的骑士重新出现在门口。他的铠甲已经满是裂痕，但目光中却燃烧着无法撼动的信念。</span></p><p><span>艾尔文举起长剑，“报名成为骑士的时候，我就知道会有今天。你来负责终结他，我们负责挡住那些怪物！”</span></p><p><span>蕾曦娅的目光中闪过一丝复杂的情感，她点了点头，转回身，面对讷什：“来吧，这一次，我向你保证，我不会有一点迟疑。”</span></p><p><span>讷什的脸色变得阴冷，手中的圣剑猛然一震，整个大厅的符文剧烈颤抖。空气中弥漫的压迫感陡然加剧，仿佛一场风暴即将爆发。</span></p><p><span>“很好。”他的声音冰冷而狂妄，“那么，就让你们一起见证真正的力量。”</span></p><p><span>大厅内的光芒骤然闪烁，空气中的寒意如刀般侵袭每个人的肌肤。</span></p><h1 id='第四章'><span>第四章</span></h1><p><span>他手中的圣剑高高举起，剑身爆发出扭曲的红黑光芒，涌动的力量将空气撕裂。地面上的符文猛然震颤，红光沿着裂缝攀爬，整个空间宛如即将崩塌的牢笼。</span></p><p><span>“很好。”讷什的声音冰冷而狂妄，“那么，就让你们一起见证真正的力量！”</span></p><p><span>光芒骤然闪烁，空气中的寒意如刀般侵袭众人。未被腐化的骑士们下意识后退几步，但艾尔文站了出来，举剑指向讷什，声音洪亮：</span></p><p><span>“骑士们，保护蕾曦娅！无论黑暗有多强，我们不能退缩！”</span></p><p><span>腐化的骑士们咆哮着冲了过来，他们的盔甲如同融化般滴下黑色的液体，手中的武器被黑暗完全吞噬，挥动间带着可怕的压迫感。艾尔文迎面挡下一名骑士的重击，长剑与对方的巨刃碰撞，爆发出刺耳的金属摩擦声。</span></p><p><span>蕾曦娅的目光始终锁定在讷什身上。她缓缓举起长矛，寒芒在矛尖跳动，仿佛呼应着她内心的坚定意志。</span></p><p><span>“讷什！”她冷冷说道，“光明的力量，永远不会容许你这样的亵渎。”</span></p><p><span>讷什大笑，声音低沉而狂妄：“光明？那你就亲眼看着它熄灭吧。”</span></p><p><span>他猛然挥剑，圣剑劈出一道炽烈的黑红剑气，携着撕裂空气的怒啸直扑蕾曦娅。她迅速跃开，长矛旋转间划出一道弧形的光芒，将剑气撕裂成无数碎片。碎裂的能量在她身后轰然炸开，冲击波掀起漫天灰尘。</span></p><p><span>蕾曦娅没有给他喘息的机会，矛尖如流星般直刺讷什的心口。讷什冷笑，手中的圣剑横扫而来，精准地挡住了攻击。矛尖与剑锋相撞，爆发出震耳的轰鸣，火花如雨点洒落。</span></p><p><span>讷什以力量压制，圣剑猛然一推，将蕾曦娅逼退几步。他得势不饶人，剑锋带着压倒性的气势直劈而下，目标是她的头顶。</span></p><p><span>蕾曦娅单手撑地，一个迅速的翻滚躲过攻击，长矛随即横扫向他的腰部。矛尖擦着他的护甲划过，带起一声刺耳的金属裂响。</span></p><p><span>“你动作变慢了。”蕾曦娅冷冷说道，长矛一震，再次刺向他的肩膀。</span></p><p><span>讷什咬牙格挡，黑红的光芒从圣剑上爆发，将她的长矛震开。但就在他准备反击的瞬间，蕾曦娅抓住机会，矛尖迅猛地刺向他的腹部。虽然他及时侧身闪避，但矛尖仍然划过他的护甲，在腹部留下了一道深深的裂痕。</span></p><hr /><p><span>讷什的眼神越发疯狂，圣剑的符文疯狂跳动，红黑的光芒攀上大厅的每一面墙壁，压迫感逐渐逼近顶点。地面开始崩裂，巨石从穹顶落下，砸出震耳欲聋的巨响。</span></p><p><span>“这就是力量的极限！”讷什大吼，手中的圣剑猛然插入地面，扭曲的力量从剑身扩散，地面的裂痕瞬间蔓延开来，将祭坛分割成无数块浮动的碎片。</span></p><p><span>蕾曦娅脚下的石板开始坍塌，她迅速跃起，矛尖插入一块稳固的岩石，借力再度冲向讷什，长矛绽放出耀眼的光辉，那光芒如潮水般涌向讷什，冲散了他周围的黑暗。</span></p><p><span>“这怎么可能！”讷什怒吼，圣剑再次挥出一道黑红剑气，试图击退她。然而，这一次，他的攻击被光辉完全挡住。蕾曦娅的长矛如雷霆般贯穿黑暗，直逼他的胸膛。</span></p><p><span>矛尖刺入讷什的护甲，他发出一声低吼，身体剧烈晃动，鲜血从伤口喷涌而出。但他仍然握紧圣剑，红光在剑身上越发扭曲，仿佛濒临崩溃。</span></p><p><span>就在此时，蕾曦娅的长矛爆发出耀眼的光辉，珀伽索斯的虚影从矛中浮现。那巨大的身躯笼罩在光芒中，双翼展开，将整个大厅照亮。</span></p><p><span>“光明从未离开。”珀伽索斯的声音低沉而庄严，充满了不可抗拒的威严。</span></p><p><span>讷什瞪大双眼，声音中带着绝望：“不可能！这力量应该属于我！”</span></p><p><span>“它从未属于你。”蕾曦娅冷冷说道，猛然用力，将长矛彻底刺穿讷什的胸膛。</span></p><p><span>圣剑的符文在这一刻崩裂，爆发出刺目的光芒。那股失控的力量化作怒潮，将讷什连同那些被完全腐化的骑士吞没。他们的身影在光辉中逐渐湮灭，最终消失无踪。被黑暗侵蚀的祭坛，石壁开始崩落，穹顶裂开的地方，阳光洒下，笼罩上圣洁的光芒。</span></p><hr /><p><span>地面开始剧烈震动，裂缝从祭坛中心扩散，迅速蔓延至整个大厅。石柱一根接一根轰然倒塌，碎裂的穹顶如雨点般坠落，带着撕裂空气的沉闷呼啸。</span></p><p><span>“快跑！”艾尔文大声喊道，护住身旁的一名骑士，用力将他推开一块落下的巨石。他转身看向蕾曦娅，目光中满是焦急，“蕾曦娅，快离开这里！”</span></p><p><span>蕾曦娅站在剧烈晃动的地面中央，目光冷静而坚毅。她的手紧握长矛，微微颤抖的矛尖依然残留着战斗后的余温。空气中的灰尘呛人，遮蔽了视线，呼喊声、崩塌声交织成一片。</span></p><p><span>就在神殿即将彻底崩塌的瞬间，蕾曦娅的长矛突然迸发出耀眼的光辉，那光芒纯净而圣洁，贯穿了整个摇摇欲坠的空间。伴随着一声低沉而庄严的鸣叫，光辉从长矛中升起，逐渐凝聚成一个虚幻的圣兽形态，珀伽索斯流浪的灵魂。</span></p><p><span>“珀伽索斯……”蕾曦娅喃喃着，目光中充满敬畏与希望。</span></p><p><span>光辉中的珀伽索斯盘旋在半空，它俯视着崩塌的神殿，展开了巨大的双翼。与此同时，从圣剑破碎处升起的光芒缓缓汇聚，那是珀伽索斯的躯体。灵魂与躯体光辉逐渐交织，最终融为一体。</span></p><p><span>那一刻，珀伽索斯的身影彻底凝实，羽翼如星光编织而成，身躯焕发出恢弘的力量。它仰天长鸣，双翼一振，一道强大的光辉波动从它的身上扩散开来，将崩塌的碎石与尘土瞬间化为虚无。</span></p><p><span>珀伽索斯的光辉笼罩着每一个人，它低头注视蕾曦娅，目光温暖而坚定。</span></p><p><span>“快！”蕾曦娅大喊，“所有人，靠近珀伽索斯！”</span></p><p><span>艾尔文和其他未被腐化的骑士迅速聚拢，他们的盔甲满是裂痕，面容疲惫，但目光中却燃烧着重燃的希望。珀伽索斯振动双翼，周围的光辉化作一道屏障，将所有人笼罩其中。</span></p><p><span>“它在保护我们！”艾尔文震惊地看着周围的光幕，光辉驱散了灰尘与碎石，将即将坠落的巨石挡在外面。</span></p><p><span>珀伽索斯再次发出一声长鸣，光辉托起众人，缓缓升入空中。神殿的废墟在他们脚下不断坍塌，裂缝吞噬了曾经辉煌的结构，最终化作一片深不见底的深渊。</span></p><h1 id='尾声'><span>尾声</span></h1><p><span>艾尔文缓缓走到蕾曦娅面前，他的铠甲已经破损，脸上还有几处擦伤，但目光中却满是敬意与期待。</span></p><p><span>“蕾曦娅，”他声音低沉而肃穆，“这次的胜利是因为你。如果没有你的坚持，我们不可能战胜讷什，也不可能看到光明重新回到这片土地。”</span></p><p><span>蕾曦娅微微皱眉，低头看着手中的长矛，那矛身上依然闪烁着珀伽索斯的光辉。她缓缓抬头，目光扫过在场的每一个骑士，他们或疲惫，或伤痕累累，但所有人的眼神都透露着同一个信念——信任。</span></p><p><span>“我只是尽了自己的职责。”她的声音冷静而坚定，“一个很久之前就该履行的职责。”</span></p><p><span>“但我们需要一个领袖，”艾尔文说道，语气中带着不容置疑的认真，“光辉骑士团不能再迷失方向，我们需要一个团长来带领我们，让光明的信念延续下去。或许，你可以试试？”</span></p><p><span>其余骑士纷纷点头，他们的目光一致望向蕾曦娅。她愣了一瞬，目光微微低垂，沉思片刻，随后缓缓举起长矛。矛尖直指苍穹，光辉从矛身蔓延，照亮了每一张面孔。</span></p><p><span>“从这一刻开始，”蕾曦娅深吸一口气，声音如寒风般清冽，“我将肩负这份责任，为光明，为守护世间不再被黑暗吞噬。”</span></p><p><span>艾尔文将剑插入地面：“团长，我们将追随你，直至最后一刻。”</span></p><p><span>其他骑士紧随其后，铿锵的誓言在晨风中回荡：“我们将追随您，直至最后一刻！”</span></p><hr /><p><span>夜晚来临，篝火燃烧，星空浩瀚。蕾曦娅独自坐在山巅，长矛放在膝上，映着火光的矛身依旧闪烁着淡淡的光辉。</span></p><p><span>“珀伽索斯，这是独一无二的力量，也是无法推卸的责任。”她低声说道，仿佛在与某个不可见的存在对话，“光明的道路从来不易，我会用这一生去守护它。”</span></p><p><span>一阵清风拂过，星光仿佛回应了她的承诺，洒下一片微弱的光辉。</span></p><p><span>远处的骑士们围坐在篝火旁，低声交谈，脸上逐渐展露出久违的笑容。他们不再是迷茫的战士，而是一支有了方向的军团。</span></p><p><span>蕾曦娅站起身，背对星空，握紧了长矛。她知道，未来的道路依然荆棘密布，甚至比今天的战斗更加艰难。但她也知道，有光明与信念同行，她不会再迷失。</span></p></div></div>
+
+<script>(function(){var e=document.body.parentElement,t=[],n=null,i=document.body.classList.contains("typora-export-collapse-outline"),r=function(e,t,n){document.addEventListener(e,function(e){if(!e.defaultPrevented)for(var i=e.target;i&&i!=this;i=i.parentNode)if(i.matches(t)){!1===n.call(i,e)&&(e.preventDefault(),e.stopPropagation());break}},!1)};function o(){return e.scrollTop}r("click",".outline-expander",function(e){var t=this.closest(".outline-item-wrapper").classList;return t.contains("outline-item-open")?t.remove("outline-item-open"):t.add("outline-item-open"),d(),!1}),r("click",".outline-item",function(e){var t=this.querySelector(".outline-label");if(location.hash="#"+t.getAttribute("href"),i){var n=this.closest(".outline-item-wrapper").classList;n.contains("outline-item-open")||n.add("outline-item-open"),c(),n.add("outline-item-active")}});var a,s,l=function(){var e=o();n=null;for(var i=0;i<t.length&&t[i][1]-e<60;i++)n=t[i]},c=function(){document.querySelectorAll(".outline-item-active").forEach(e=>e.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(e=>e.classList.remove("outline-item-open"))},d=function(){if(n){c();var e=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(n[0]):n[0])+'"]');if(e)if(i){var t=e.closest(".outline-item-open>ul>.outline-item-wrapper");if(t)t.classList.add("outline-item-active");else{for(var r=(e=e.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");r;)r=(e=r).parentElement.closest(".outline-item-wrapper");e.classList.add("outline-item-active")}}else e.closest(".outline-item-wrapper").classList.add("outline-item-active")}};window.addEventListener("scroll",function(e){a&&clearTimeout(a),a=setTimeout(function(){l(),d()},300)});var u=function(){s=setTimeout(function(){!function(){t=[];var e=o();document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(n=>{var i=n.getAttribute("id");t.push([i,e+n.getBoundingClientRect().y])})}(),l(),d()},300)};window.addEventListener("resize",function(e){s&&clearTimeout(s),u()}),u()})();</script></body>
+</html>
