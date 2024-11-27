@@ -113,6 +113,14 @@ const configs = {
             },
         },
     },
+    joinUs: {
+        name: "加入我们",
+        function: function () {
+            var content =
+                "<img src='images/QRCode.JPG' alt='QRcode' style='width: 100%; height: 100%;'/>";
+            loadDoc("加入我们", content);
+        },
+    },
 };
 
 const premadeDoc = {
