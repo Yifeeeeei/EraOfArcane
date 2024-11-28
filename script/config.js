@@ -13,6 +13,12 @@ const configs = {
                     jumpToOther("htmls/rules/rules.html");
                 },
             },
+            video: {
+                name: "视频教学",
+                function: function () {
+                    jumpToOther("https://www.bilibili.com/video/BV1jKzcYKEFi/");
+                },
+            },
             deckBuild: {
                 name: "构筑卡组",
                 function: function () {
