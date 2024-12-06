@@ -1,12 +1,24 @@
 const configs = {
     guide: {
-        name: "游玩指南",
+        name: "常用工具",
         id: "guide",
 
         function: function () {
             toggleSubMenu("guide-submenu"); // Toggle sub-items for this menu
         },
         subItems: {
+            rules: {
+                name: "游戏规则",
+                function: function () {
+                    jumpToOther("htmls/rules/rules.html");
+                },
+            },
+            video: {
+                name: "视频教学",
+                function: function () {
+                    jumpToOther("https://www.bilibili.com/video/BV1jKzcYKEFi/");
+                },
+            },
             deckBuild: {
                 name: "构筑卡组",
                 function: function () {
@@ -99,6 +111,20 @@ const configs = {
                     jumpHere("htmls/Storm.html");
                 },
             },
+            Knight: {
+                name: "光辉骑士",
+                function: function () {
+                    jumpHere("htmls/Knight.html");
+                },
+            },
+        },
+    },
+    joinUs: {
+        name: "加入我们",
+        function: function () {
+            var content =
+                "<img src='images/QRCode.JPG' alt='QRcode' style='width: 100%; height: 100%;'/>";
+            loadDoc("加入我们", content);
         },
     },
 };
