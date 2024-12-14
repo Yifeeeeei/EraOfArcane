@@ -117,6 +117,12 @@ const configs = {
                     jumpHere("htmls/Knight.html");
                 },
             },
+            Moon: {
+                name: "第九轮红月",
+                function: function () {
+                    jumpHere("htmls/Moon.html");
+                },
+            },
         },
     },
     joinUs: {
