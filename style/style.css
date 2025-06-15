@@ -148,6 +148,7 @@
     height: 100vh;
     position: fixed;
     visibility: hidden;
+    display: flex;
     top: 0;
     background-color: #000000;
     opacity: 0.85;
@@ -172,7 +173,6 @@
     color: #ffffff;
     line-height: 1.6;
     font-size: 1.1em;
-    overflow: auto;
 }
 
 /* Optional styles for content */

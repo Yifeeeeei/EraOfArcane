@@ -146,4 +146,35 @@ function toggleSubMenu(subMenuId) {
         subMenu.classList.add("show"); // Show submenu
     }
 }
+function getPremadeContent() {
+    allContents = "";
+    for (const key in premadeDoc) {
+        docConts = "";
+        for (const oneCont of premadeDoc[key].content) {
+            docConts += "<p>" + oneCont + "</p>";
+        }
+        content =
+            "<div>" +
+            "<p>" +
+            "<strong>" +
+            premadeDoc[key].title +
+            "</strong>" +
+            "</p>" +
+            docConts +
+            `<a target="_blank" href="${
+                composerBase + "?code=" + premadeDoc[key].code
+            }">在ArcaneComposer查看</a>` +
+            "</div>";
+        allContents += content;
+    }
+
+    // add some blank rows to the end
+
+    for (var i = 0; i < 2; i++) {
+        allContents += "<p>&nbsp;</p>";
+    }
+
+    return allContents;
+}
+
 init();

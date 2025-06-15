@@ -39,45 +39,7 @@ const configs = {
         name: "预组卡组",
         id: "premade",
         function: function () {
-            toggleSubMenu("premade-submenu"); // Toggle sub-items for this menu
-        },
-        subItems: {
-            air: {
-                name: "高难操作",
-                function: function () {
-                    showPremade("高难操作");
-                },
-            },
-            dark: {
-                name: "运筹帷幄",
-                function: function () {
-                    showPremade("运筹帷幄");
-                },
-            },
-            earth: {
-                name: "固若金汤",
-                function: function () {
-                    showPremade("固若金汤");
-                },
-            },
-            water: {
-                name: "超模致胜",
-                function: function () {
-                    showPremade("超模致胜");
-                },
-            },
-            fire: {
-                name: "极致快攻",
-                function: function () {
-                    showPremade("极致快攻");
-                },
-            },
-            light: {
-                name: "新手入门",
-                function: function () {
-                    showPremade("新手入门");
-                },
-            },
+            loadDoc("预组卡组", getPremadeContent()); // Toggle sub-items for this menu
         },
     },
     story: {
