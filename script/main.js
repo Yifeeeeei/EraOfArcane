@@ -155,7 +155,7 @@ function getPremadeContent() {
         }
         content =
             "<div>" +
-            "<p>" +
+            '<p   style="text-align: center; font-size:24px;">' +
             "<strong>" +
             premadeDoc[key].title +
             "</strong>" +
