@@ -135,7 +135,7 @@
     position: fixed;
     left: 10px;
     bottom: 10px;
-    z-index: 2;
+    z-index: 100;
 }
 
 .absolute-item:hover {
@@ -152,6 +152,7 @@
     top: 0;
     background-color: #000000;
     opacity: 0.85;
+    z-index: 2;
     transition: left 0.3s ease-in-out; /* Add transition for the sliding effect */
 }
 
