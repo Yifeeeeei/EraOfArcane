@@ -206,22 +206,22 @@
 }
 
 /* Desktop view: when width is larger than height */
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
     #doc {
         width: 25vw;
         top: 0;
         left: -25vw;
     }
-}
+} */
 
 /* Mobile view: full width */
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
     #doc {
         width: 100vw;
         left: -100vw;
         position: fixed;
     }
-}
+} */
 #doc.active {
     left: 0; /* Move into the viewport */
 }
