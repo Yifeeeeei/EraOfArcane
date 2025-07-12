@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext");
+
+body {
+    font-family: "TeXGyreAdventor", "Century Gothic", "Didact Gothic",
+        "Segoe UI Emoji", sans-serif;
+    background: white;
+    color: #222;
+    margin: 0;
+    padding: 0;
+    line-height: 1.8;
+    font-size: 1em;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Sidebar TOC */
+#TOC {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 180px;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 1.5em 3em;
+    background-color: #ffffff;
+    /* border-right: 1px solid #ddd; */
+    font-size: 0.95em;
+}
+
+#TOC ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#TOC li {
+    margin: 0.5em 0;
+}
+
+#TOC a {
+    text-decoration: none;
+    color: #333;
+}
+
+#TOC a:hover {
+    color: #0056b3;
+}
+
+/* Main content */
+body > *:not(#TOC) {
+    margin-left: 400px;
+    padding-left: 2em;
+    max-width: 900px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    margin-top: 2em;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.3em;
+}
+
+p {
+    margin: 1em 0;
+}
+
+hr {
+    margin: 2em 0;
+    border: none;
+    border-top: 1px solid #ccc;
+}
+
+code {
+    background: #f0f0f0;
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    display: block; /* avoid small bottom gap */
+}
+
+@media screen and (max-width: 900px) {
+    #TOC {
+        display: none;
+    }
+
+    body > *:not(#TOC) {
+        margin-left: auto;
+        padding: 1.5em;
+    }
+}

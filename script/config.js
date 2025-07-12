@@ -10,7 +10,7 @@ const configs = {
             rules: {
                 name: "游戏规则",
                 function: function () {
-                    jumpToOther("htmls/rules/rules.html");
+                    jumpToOther("htmls/rules.html");
                 },
             },
             video: {
