@@ -19,6 +19,12 @@ const configs = {
                     jumpToOther("https://www.bilibili.com/video/BV1jKzcYKEFi/");
                 },
             },
+            keywords: {
+                name: "关键词一览",
+                function: function () {
+                    jumpToOther("htmls/Keywords.html");
+                },
+            },
             deckBuild: {
                 name: "构筑卡组",
                 function: function () {
