@@ -96,3 +96,38 @@ img {
         padding: 1.5em;
     }
 }
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #121212;
+        color: #e0e0e0;
+    }
+
+    #TOC {
+        background-color: #1e1e1e;
+    }
+
+    #TOC a {
+        color: #ccc;
+    }
+
+    #TOC a:hover {
+        color: #66aaff;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        border-bottom: 1px solid #444;
+    }
+
+    hr {
+        border-top: 1px solid #444;
+    }
+
+    code {
+        background: #2c2c2c;
+        color: #f8f8f2;
+    }
+}
