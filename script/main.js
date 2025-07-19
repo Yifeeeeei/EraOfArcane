@@ -61,18 +61,6 @@ function init() {
     prepareMenuItems();
 }
 
-function showPremade(name) {
-    var title = premadeDoc[name].title;
-    var content = "";
-    for (var i = 0; i < premadeDoc[name].content.length; i++) {
-        content += "<p>" + premadeDoc[name].content[i] + "</p>";
-    }
-    content += `<a target="_blank" href="${
-        composerBase + "?code=" + premadeDoc[name].code
-    }">在ArcaneComposer查看</a>`;
-    loadDoc(title, content);
-}
-
 function loadDoc(title, content) {
     var docTitle = document.getElementById("doc-title");
     var docContent = document.getElementById("doc-content");
@@ -100,10 +88,6 @@ function jumpHere(path) {
 
 function backToBase() {
     showBase();
-}
-
-function jumpToPremade(deckCode) {
-    jumpToOther("https://yifeeeeei.github.io/ArcaneComposer/?code=" + deckCode);
 }
 
 function prepareMenuItems() {
@@ -145,36 +129,6 @@ function toggleSubMenu(subMenuId) {
     } else {
         subMenu.classList.add("show"); // Show submenu
     }
-}
-function getPremadeContent() {
-    allContents = "";
-    for (const key in premadeDoc) {
-        docConts = "";
-        for (const oneCont of premadeDoc[key].content) {
-            docConts += "<p>" + oneCont + "</p>";
-        }
-        content =
-            "<div>" +
-            '<p   style="text-align: center; font-size:24px;">' +
-            "<strong>" +
-            premadeDoc[key].title +
-            "</strong>" +
-            "</p>" +
-            docConts +
-            `<a target="_blank" href="${
-                composerBase + "?code=" + premadeDoc[key].code
-            }">在ArcaneComposer查看</a>` +
-            "</div>";
-        allContents += content;
-    }
-
-    // add some blank rows to the end
-
-    for (var i = 0; i < 2; i++) {
-        allContents += "<p>&nbsp;</p>";
-    }
-
-    return allContents;
 }
 
 init();

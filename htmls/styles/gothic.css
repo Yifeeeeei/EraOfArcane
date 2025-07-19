@@ -13,13 +13,25 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+#TOC ul ul {
+    margin-left: 1em;
+}
+
+#TOC ul ul ul {
+    margin-left: 1.5em;
+}
+
+#TOC ul ul ul ul {
+    margin-left: 2em;
+}
+
 /* Sidebar TOC */
 #TOC {
     position: fixed;
     top: 0;
     left: 0;
     width: 180px;
-    height: 100vh;
+    height: calc(100vh - 3em);
     overflow-y: auto;
     padding: 1.5em 3em;
     background-color: #ffffff;
