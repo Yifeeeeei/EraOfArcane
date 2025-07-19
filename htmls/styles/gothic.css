@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext");
-
 body {
     font-family: "TeXGyreAdventor", "Century Gothic", "Didact Gothic",
         "Segoe UI Emoji", sans-serif;
@@ -98,6 +96,14 @@ img {
     display: block; /* avoid small bottom gap */
 }
 
+a {
+    color: #b33737;
+}
+
+a:hover {
+    color: #852f2f;
+}
+
 @media screen and (max-width: 900px) {
     #TOC {
         display: none;
@@ -141,5 +147,13 @@ img {
     code {
         background: #2c2c2c;
         color: #f8f8f2;
+    }
+
+    a {
+        color: #eab4b4;
+    }
+
+    a:hover {
+        color: #cb8b8b;
     }
 }
