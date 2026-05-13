@@ -96,8 +96,8 @@ const configs = {
     joinUs: {
         name: "加入我们",
         function: function () {
-            var content =
-                "<img src='images/QRCode.JPG' alt='QRcode' style='height: 100%;'/>";
+            const content =
+                "<img src='images/QRCode.JPG' alt='加入我们二维码' class='qr-code'/>";
             loadDoc("加入我们", content);
         },
     },

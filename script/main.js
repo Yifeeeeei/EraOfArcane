@@ -1,7 +1,7 @@
-var baseDiv;
-var frameDiv;
-var docDiv;
-var composerBase = "https://yifeeeeei.github.io/ArcaneComposer/";
+let baseDiv;
+let frameDiv;
+let docDiv;
+const composerBase = "https://yifeeeeei.github.io/ArcaneComposer/";
 
 function deactiveElement(element) {
     if (element.classList.contains("active")) {
@@ -18,6 +18,7 @@ function showBase() {
     activeElement(baseDiv);
     deactiveElement(frameDiv);
     deactiveElement(docDiv);
+    closeSubMenus();
 }
 
 function showFrame() {
@@ -27,15 +28,12 @@ function showFrame() {
 }
 
 function showDoc() {
-    // deactiveElement(baseDiv);
-    // deactiveElement(frameDiv);
     activeElement(docDiv);
 }
 
 function setBackgroundImage() {
-    var bgDiv = document.getElementById("background_img");
-    // set the background image
-    bgImageList = [
+    const bgDiv = document.getElementById("background_img");
+    const bgImageList = [
         "url('./images/none.jpg')",
         "url('./images/air.jpg')",
         "url('./images/dark.webp')",
@@ -53,27 +51,23 @@ function init() {
     baseDiv = document.getElementById("base");
     frameDiv = document.getElementById("frame");
     docDiv = document.getElementById("doc");
-    console.log(baseDiv);
-    console.log(frameDiv);
-    console.log(docDiv);
     setBackgroundImage();
     showBase();
     prepareMenuItems();
 }
 
 function loadDoc(title, content) {
-    var docTitle = document.getElementById("doc-title");
-    var docContent = document.getElementById("doc-content");
-    docTitle.innerHTML = title;
+    const docTitle = document.getElementById("doc-title");
+    const docContent = document.getElementById("doc-content");
+    docTitle.textContent = title;
     docContent.innerHTML = content;
     showDoc();
 }
 
 function loadFrame(path) {
-    var frame = document.getElementById("iframe");
+    const frame = document.getElementById("iframe");
     frame.src = path;
     showFrame();
-    console.log("load frame: " + path + frame.src);
 }
 
 function jumpToOther(path) {
@@ -91,44 +85,73 @@ function backToBase() {
 }
 
 function prepareMenuItems() {
-    // id: {name: function:, subItems: {}}
-
     const baseMenu = document.getElementById("base-menu");
 
-    // Create menu items
     for (const key in configs) {
-        const item = document.createElement("ul");
+        const group = document.createElement("div");
+        group.classList.add("menu-group");
+
+        const item = document.createElement("button");
+        item.type = "button";
         item.classList.add("menu-item");
-        item.innerHTML = configs[key].name;
+        item.textContent = configs[key].name;
         item.onclick = configs[key].function;
         item.id = configs[key].id;
-        baseMenu.appendChild(item);
+        group.appendChild(item);
 
-        // If there are sub-items, create a submenu
         if (configs[key].subItems) {
             const subMenu = document.createElement("ul");
             subMenu.id = `${key}-submenu`;
             subMenu.classList.add("submenu");
+            item.setAttribute("aria-expanded", "false");
+            item.setAttribute("aria-controls", subMenu.id);
 
             for (const subKey in configs[key].subItems) {
                 const subItem = document.createElement("li");
                 subItem.classList.add("menu-subitem");
-                subItem.innerHTML = configs[key].subItems[subKey].name;
-                subItem.onclick = configs[key].subItems[subKey].function;
+                subItem.textContent = configs[key].subItems[subKey].name;
+                subItem.onclick = function (event) {
+                    event.stopPropagation();
+                    configs[key].subItems[subKey].function();
+                };
                 subMenu.appendChild(subItem);
             }
-            item.appendChild(subMenu);
+            group.appendChild(subMenu);
         }
+
+        baseMenu.appendChild(group);
     }
 }
 
 function toggleSubMenu(subMenuId) {
     const subMenu = document.getElementById(subMenuId);
+    const parentItem = document.querySelector(`[aria-controls="${subMenuId}"]`);
+
+    document.querySelectorAll(".submenu").forEach(function (menu) {
+        if (menu.id !== subMenuId) {
+            menu.classList.remove("show");
+            document
+                .querySelector(`[aria-controls="${menu.id}"]`)
+                ?.setAttribute("aria-expanded", "false");
+        }
+    });
+
     if (subMenu.classList.contains("show")) {
-        subMenu.classList.remove("show"); // Hide submenu
+        subMenu.classList.remove("show");
+        parentItem?.setAttribute("aria-expanded", "false");
     } else {
-        subMenu.classList.add("show"); // Show submenu
+        subMenu.classList.add("show");
+        parentItem?.setAttribute("aria-expanded", "true");
     }
+}
+
+function closeSubMenus() {
+    document.querySelectorAll(".submenu").forEach(function (menu) {
+        menu.classList.remove("show");
+    });
+    document.querySelectorAll("[aria-expanded]").forEach(function (item) {
+        item.setAttribute("aria-expanded", "false");
+    });
 }
 
 init();
