@@ -26,8 +26,9 @@ body {
     overflow: hidden;
     color: var(--ink);
     background: var(--black);
-    font-family: "TeXGyreAdventor", "Century Gothic", "Didact Gothic",
-        "Noto Serif SC", "Songti SC", "Segoe UI Emoji", sans-serif;
+    font-family:
+        "TeXGyreAdventor", "Century Gothic", "Didact Gothic", "Noto Serif SC",
+        "Songti SC", "Segoe UI Emoji", sans-serif;
     -webkit-font-smoothing: antialiased;
     text-rendering: geometricPrecision;
 }
@@ -97,9 +98,18 @@ button {
 #background_shader {
     z-index: -2;
     background:
-        radial-gradient(circle at 50% 44%, rgba(216, 177, 93, 0.16), transparent 26rem),
-        linear-gradient(90deg, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.34) 48%, rgba(0, 0, 0, 0.82)),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.92));
+        radial-gradient(
+            circle at 50% 44%,
+            rgba(216, 177, 93, 0.16),
+            transparent 26rem
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.82),
+            rgba(0, 0, 0, 0.34) 48%,
+            rgba(0, 0, 0, 0.62)
+        ),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.72));
 }
 
 #title {

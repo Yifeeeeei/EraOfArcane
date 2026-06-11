@@ -34,11 +34,11 @@ function showDoc() {
 function setBackgroundImage() {
     const bgDiv = document.getElementById("background_img");
     const bgImageList = [
-        "url('./images/none.jpg')",
-        "url('./images/air.jpg')",
+        "url('./images/none.webp')",
+        "url('./images/air.webp')",
         "url('./images/dark.webp')",
         "url('./images/light.webp')",
-        "url('./images/fire.png')",
+        "url('./images/fire.webp')",
         "url('./images/earth.webp')",
         "url('./images/water.webp')",
     ];
