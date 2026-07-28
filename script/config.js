@@ -91,6 +91,48 @@ const configs = {
                     jumpHere("htmls/Moon.html");
                 },
             },
+            EmeraldImmortality: {
+                name: "翡翠永生",
+                function: function () {
+                    jumpHere("htmls/EmeraldImmortality.html");
+                },
+            },
+            BlackPineDinner: {
+                name: "黑松家的晚宴",
+                function: function () {
+                    jumpHere("htmls/BlackPineDinner.html");
+                },
+            },
+            PureChild: {
+                name: "纯净之子",
+                function: function () {
+                    jumpHere("htmls/PureChild.html");
+                },
+            },
+            RavenAndSparrow: {
+                name: "鸦与雀",
+                function: function () {
+                    jumpHere("htmls/RavenAndSparrow.html");
+                },
+            },
+            AbyssReturner: {
+                name: "深渊归来者",
+                function: function () {
+                    jumpHere("htmls/AbyssReturner.html");
+                },
+            },
+            WinterNeedsNoKing: {
+                name: "凛冬不需要国王",
+                function: function () {
+                    jumpHere("htmls/WinterNeedsNoKing.html");
+                },
+            },
+            EmptyThrone: {
+                name: "王座无人",
+                function: function () {
+                    jumpHere("htmls/EmptyThrone.html");
+                },
+            },
         },
     },
     joinUs: {
