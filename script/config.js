@@ -35,17 +35,10 @@ const configs = {
                 name: "TTS模组",
                 function: function () {
                     jumpToOther(
-                        "https://steamcommunity.com/sharedfiles/filedetails/?id=3155709993"
+                        "https://steamcommunity.com/sharedfiles/filedetails/?id=3155709993",
                     );
                 },
             },
-        },
-    },
-    premade: {
-        name: "预组卡组",
-        id: "premade",
-        function: function () {
-            jumpToOther("htmls/prebuilts.html");
         },
     },
     story: {
