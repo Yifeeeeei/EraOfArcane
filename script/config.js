@@ -1,4 +1,11 @@
 const configs = {
+    deckBuild: {
+        name: "卡牌一览",
+        id: "deckBuild",
+        function: function () {
+            jumpToOther("https://yifeeeeei.github.io/ArcaneComposer/");
+        },
+    },
     guide: {
         name: "常用工具",
         id: "guide",
@@ -25,12 +32,7 @@ const configs = {
                     jumpToOther("htmls/Keywords.html");
                 },
             },
-            deckBuild: {
-                name: "构筑卡组",
-                function: function () {
-                    jumpToOther("https://yifeeeeei.github.io/ArcaneComposer/");
-                },
-            },
+
             ttsMod: {
                 name: "TTS模组",
                 function: function () {
