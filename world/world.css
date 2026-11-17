@@ -360,7 +360,7 @@ main {
 .invite-map {
   background:
     linear-gradient(90deg, #11191aeb, #11191ab8),
-    url("assets/world-map.png") center/cover;
+    url("assets/world-map-overview.webp") center/cover;
 }
 .invite h2 {
   margin: 0 0 10px;
@@ -497,8 +497,6 @@ main {
 .map-stage {
   position: absolute;
   inset: 0;
-  transform-origin: center;
-  will-change: transform;
 }
 .map-stage svg {
   display: block;
@@ -851,12 +849,39 @@ main {
   gap: 18px;
 }
 .story-card {
-  padding: 26px;
   background: linear-gradient(135deg, #272c24e8, #161d1ee8);
   border: 1px solid var(--line);
   display: flex;
   flex-direction: column;
-  min-height: 235px;
+  overflow: hidden;
+}
+.story-art {
+  position: relative;
+  display: block;
+  aspect-ratio: 8 / 5;
+  overflow: hidden;
+  background: #111719;
+  border-bottom: 1px solid var(--line);
+}
+.story-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+.story-card:hover .story-art img {
+  transform: scale(1.025);
+}
+.story-card:focus-within {
+  border-color: var(--gold);
+}
+.story-copy {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 220px;
+  padding: 26px;
 }
 .story-card .story-no {
   font:
@@ -878,6 +903,7 @@ main {
 .story-card .story-actions {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
   font-size: 13px;
 }
 .loading,
@@ -1225,6 +1251,10 @@ body.embedded main {
     grid-template-columns: 1fr;
   }
   .story-card {
+    min-height: 0;
+    padding: 0;
+  }
+  .story-copy {
     min-height: 210px;
     padding: 24px;
   }

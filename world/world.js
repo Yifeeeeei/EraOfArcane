@@ -21,6 +21,9 @@ let data;
 let mapState = { region: null, zoom: 1, x: 0, y: 0 };
 let drag;
 let suppressClick = false;
+let detailMapImage;
+const detailMapURL = "assets/world-map-detail.webp";
+const overviewMapURL = "assets/world-map-overview.webp";
 
 function link(href, text, cls = "") {
   return `<a href="${esc(href)}"${cls ? ` class="${esc(cls)}"` : ""}>${esc(text)}</a>`;
@@ -70,7 +73,7 @@ function mapSVG(region) {
       return `<a href="${href}" class="landmark ${region ? "" : "world-name"} ${selected ? "selected" : ""}" aria-label="${region ? "查看" : "进入"}${esc(p.name)}" data-kind="${p.kind || "region"}"><title>${esc(p.name)}</title><g transform="translate(${p.x} ${p.y})"><circle class="halo" r="${region ? font * 0.3 : 6}"/><text x="${region ? (edge ? -font * 0.65 : font * 0.65) : 0}" y="${region ? font * 0.27 : -14}" text-anchor="${region ? (edge ? "end" : "start") : "middle"}" font-size="${font}" style="stroke-width:${region ? font * 0.13 : 4}">${esc(p.name)}</text></g></a>`;
     })
     .join("");
-  return `<svg viewBox="${bounds.join(" ")}" role="group" aria-label="${region ? esc(region.name) + "详图" : "穹世界总图"}" xmlns="http://www.w3.org/2000/svg"><title>${region ? esc(region.name) + "详图" : "穹世界总图"}</title><desc>${region ? "可选择城市、领地、山脉、河流与林地。" : "选择一片大陆或群岛，进入当地详图。"}</desc><image href="assets/world-map.png" width="1536" height="1024"/>${marks}</svg>`;
+  return `<svg viewBox="${bounds.join(" ")}" data-bounds="${bounds.join(" ")}" role="group" aria-label="${region ? esc(region.name) + "详图" : "穹世界总图"}" xmlns="http://www.w3.org/2000/svg"><title>${region ? esc(region.name) + "详图" : "穹世界总图"}</title><desc>${region ? "可选择城市、领地、山脉、河流与林地。" : "选择一片大陆或群岛，进入当地详图。"}</desc><image href="${overviewMapURL}" width="1536" height="1024"/>${marks}</svg>`;
 }
 function regionPanel(region, place) {
   if (!region)
@@ -133,20 +136,67 @@ function filterPlaces() {
     el.style.opacity = visible.some((p) => p.id === id) ? "1" : ".2";
   });
 }
+function updateMapImage() {
+  const svg = document.querySelector("#map-stage svg");
+  const viewport = document.getElementById("map-viewport");
+  if (!svg || !viewport) return;
+  const needsDetail =
+    mapState.region ||
+    mapState.zoom > 1 ||
+    viewport.clientWidth * window.devicePixelRatio > 1536;
+  const image = svg.querySelector("image");
+  if (!needsDetail) {
+    image.setAttribute("href", overviewMapURL);
+    return;
+  }
+  if (detailMapImage?.complete && detailMapImage.naturalWidth) {
+    image.setAttribute("href", detailMapURL);
+    return;
+  }
+  if (!detailMapImage) {
+    // Keep the overview visible until the larger atlas has decoded.
+    detailMapImage = new Image();
+    detailMapImage.onload = updateMapImage;
+    detailMapImage.src = detailMapURL;
+  }
+}
 function transformMap() {
   const stage = document.getElementById("map-stage"),
     viewport = document.getElementById("map-viewport");
   if (!stage) return;
-  const limitX = (viewport.clientWidth * (mapState.zoom - 1)) / 2,
-    limitY = (viewport.clientHeight * (mapState.zoom - 1)) / 2;
+  const svg = stage.querySelector("svg");
+  const [left, top, baseWidth, baseHeight] = svg.dataset.bounds
+    .split(" ")
+    .map(Number);
+  if (!viewport.clientWidth || !viewport.clientHeight) return;
+  const fit = Math.min(
+    viewport.clientWidth / baseWidth,
+    viewport.clientHeight / baseHeight,
+  );
+  const frameWidth = viewport.clientWidth / fit,
+    frameHeight = viewport.clientHeight / fit;
+  const width = frameWidth / mapState.zoom,
+    height = frameHeight / mapState.zoom;
+  const limitX = (frameWidth - width) / 2,
+    limitY = (frameHeight - height) / 2;
   mapState.x = Math.max(-limitX, Math.min(limitX, mapState.x));
   mapState.y = Math.max(-limitY, Math.min(limitY, mapState.y));
-  stage.style.transform = `translate(${mapState.x}px,${mapState.y}px) scale(${mapState.zoom})`;
+  // Change the SVG camera so text is drawn at its final size, rather than
+  // enlarging a browser-composited bitmap of the complete map layer.
+  svg.setAttribute(
+    "viewBox",
+    [
+      left + (baseWidth - width) / 2 - mapState.x,
+      top + (baseHeight - height) / 2 - mapState.y,
+      width,
+      height,
+    ].join(" "),
+  );
   viewport.style.touchAction = mapState.zoom > 1 ? "none" : "pan-y";
   viewport.style.cursor = mapState.zoom > 1 ? "grab" : "default";
-  viewport.style.touchAction = mapState.zoom > 1 ? "none" : "pan-y";
   document.getElementById("zoom-out").disabled = mapState.zoom <= 1;
   document.getElementById("zoom-in").disabled = mapState.zoom >= 3;
+  updateMapImage();
 }
 function setupAtlas() {
   document
@@ -158,11 +208,11 @@ function setupAtlas() {
   filterPlaces();
   transformMap();
   document.getElementById("zoom-in").onclick = () => {
-    mapState.zoom = Math.min(3, mapState.zoom + 0.4);
+    mapState.zoom = Math.min(3, Math.round((mapState.zoom + 0.4) * 10) / 10);
     transformMap();
   };
   document.getElementById("zoom-out").onclick = () => {
-    mapState.zoom = Math.max(1, mapState.zoom - 0.4);
+    mapState.zoom = Math.max(1, Math.round((mapState.zoom - 0.4) * 10) / 10);
     transformMap();
   };
   document.getElementById("zoom-reset").onclick = () => {
@@ -173,12 +223,15 @@ function setupAtlas() {
   const view = document.getElementById("map-viewport");
   view.addEventListener("pointerdown", (ev) => {
     if (mapState.zoom <= 1 || ev.button !== 0) return;
+    const matrix = view.querySelector("svg").getScreenCTM();
+    if (!matrix) return;
     drag = {
       id: ev.pointerId,
       x: ev.clientX,
       y: ev.clientY,
       ox: mapState.x,
       oy: mapState.y,
+      unitsPerPixel: 1 / matrix.a,
       moved: false,
     };
   });
@@ -190,8 +243,8 @@ function setupAtlas() {
       drag.moved = true;
       if (!view.hasPointerCapture(ev.pointerId))
         view.setPointerCapture(ev.pointerId);
-      mapState.x = drag.ox + dx;
-      mapState.y = drag.oy + dy;
+      mapState.x = drag.ox + dx * drag.unitsPerPixel;
+      mapState.y = drag.oy + dy * drag.unitsPerPixel;
       transformMap();
     }
   });
@@ -285,7 +338,7 @@ function filterStories() {
       .filter((p) => p.stories.includes(s.id))
       .map((p) => p.name)
       .join(" ");
-    return [s.title, s.summary, region?.name, related]
+    return [s.title, s.summary, region?.name, related, s.art?.card_name]
       .join(" ")
       .toLowerCase()
       .includes(q);
@@ -293,7 +346,7 @@ function filterStories() {
   document.getElementById("story-grid").innerHTML = stories
     .map(
       (s) =>
-        `<article class="story-card"><span class="story-no">TALE ${String(data.stories.indexOf(s) + 1).padStart(2, "0")}</span><h2>${esc(s.title)}</h2><p>${esc(s.summary)}</p><div class="story-actions">${link(s.url, "阅读故事 ↗")}${s.region ? link("#atlas/" + s.region, "故事中的地方 →") : ""}</div></article>`,
+        `<article class="story-card"><a class="story-art" href="${esc(s.url)}" tabindex="-1" aria-hidden="true"><img src="assets/stories/${esc(s.art.image)}" alt="" width="${s.art.width}" height="${s.art.height}" loading="lazy" decoding="async" style="object-position:${s.art.position[0]}% ${s.art.position[1]}%"></a><div class="story-copy"><span class="story-no">TALE ${String(data.stories.indexOf(s) + 1).padStart(2, "0")}</span><h2>${esc(s.title)}</h2><p>${esc(s.summary)}</p><div class="story-actions">${link(s.url, "阅读故事 ↗")}${s.region ? link("#atlas/" + s.region, "故事中的地方 →") : ""}</div></div></article>`,
     )
     .join("");
   document.getElementById("story-count").textContent = stories.length
@@ -368,7 +421,7 @@ async function start() {
   if (new URLSearchParams(location.search).get("embed") === "1")
     document.body.classList.add("embedded");
   try {
-    const response = await fetch("data.json");
+    const response = await fetch("data.json?v=illustrated-20261116");
     if (!response.ok) throw new Error("Setting data unavailable");
     data = await response.json();
     render();

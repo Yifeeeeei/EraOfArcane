@@ -45,6 +45,11 @@ def build():
     for story in data['stories']:
         if not (ROOT/'world'/story['url']).is_file():
             raise ValueError(f'Missing story: {story["url"]}')
+        art = story.get('art')
+        if not art or not (ROOT/'world/assets/stories'/art['image']).is_file():
+            raise ValueError(f'Missing story artwork: {story["id"]}')
+        if len(art['position']) != 2 or any(not 0 <= value <= 100 for value in art['position']):
+            raise ValueError(f'Invalid story artwork position: {story["id"]}')
     output = ROOT / 'world/data.json'
     output.write_text(json.dumps(data, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
     print(f'Built {output.relative_to(ROOT)}: {len(chapters)} chapters, {len(regions)} regions, {len(stories)} original stories')

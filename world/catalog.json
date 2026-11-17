@@ -1157,91 +1157,247 @@
       "title": "人鱼的故事",
       "summary": "潮汐之间，一位航海者与人鱼相遇。",
       "region": "west",
-      "url": "../htmls/Mermaid.html"
+      "url": "../htmls/Mermaid.html",
+      "art": {
+        "image": "Mermaid.webp",
+        "position": [
+          54,
+          23
+        ],
+        "card_number": "1211001",
+        "card_name": "人鱼 菲尔",
+        "width": 1672,
+        "height": 941,
+        "source": "drawings/基础包/基础包-伙伴/1211001.webp"
+      }
     },
     {
       "id": "Fires",
       "title": "烈火之门派",
       "summary": "旧山门的火焰，照见另一种选择。",
       "region": "celtic",
-      "url": "../htmls/Fires.html"
+      "url": "../htmls/Fires.html",
+      "art": {
+        "image": "Fires.webp",
+        "position": [
+          50,
+          14
+        ],
+        "card_number": "4111003",
+        "card_name": "大祭司 梵天",
+        "width": 1024,
+        "height": 1536,
+        "source": "drawings/基础包/基础包-人物/4111003.webp"
+      }
     },
     {
       "id": "Dawn",
       "title": "破晓",
       "summary": "漫长的夜里，一位巫师守着他的城。",
       "region": "celtic",
-      "url": "../htmls/Dawn.html"
+      "url": "../htmls/Dawn.html",
+      "art": {
+        "image": "Dawn.webp",
+        "position": [
+          42,
+          38
+        ],
+        "card_number": "1511002",
+        "card_name": "大法师 伦德萨尔",
+        "width": 1024,
+        "height": 1536,
+        "source": "drawings/基础包/基础包-伙伴/1511002.webp"
+      }
     },
     {
       "id": "Storm",
       "title": "风暴之城",
       "summary": "风暴、圣兽与一座城的命运。",
       "region": null,
-      "url": "../htmls/Storm.html"
+      "url": "../htmls/Storm.html",
+      "art": {
+        "image": "Storm.webp",
+        "position": [
+          60,
+          13
+        ],
+        "card_number": "1311002",
+        "card_name": "\"风暴之女\" 艾拉雅",
+        "width": 1024,
+        "height": 1536,
+        "source": "drawings/基础包/基础包-伙伴/1311002.webp"
+      }
     },
     {
       "id": "Knight",
       "title": "光辉骑士",
       "summary": "誓言与光辉，伴随骑士踏上道路。",
       "region": null,
-      "url": "../htmls/Knight.html"
+      "url": "../htmls/Knight.html",
+      "art": {
+        "image": "Knight.webp",
+        "position": [
+          50,
+          9
+        ],
+        "card_number": "4511003",
+        "card_name": "骑士团长 蕾曦娅",
+        "width": 1024,
+        "height": 1536,
+        "source": "drawings/基础包/基础包-人物/4511003.webp"
+      }
     },
     {
       "id": "Moon",
       "title": "第九轮红月",
       "summary": "红月映入镜中，旧约等候来客。",
       "region": "southg",
-      "url": "../htmls/Moon.html"
+      "url": "../htmls/Moon.html",
+      "art": {
+        "image": "Moon.webp",
+        "position": [
+          40,
+          0
+        ],
+        "card_number": "1611101",
+        "card_name": "红月魔巫 瑟薇安娜",
+        "width": 1024,
+        "height": 1536,
+        "source": "drawings/王权纷争/王权纷争-伙伴/1611101.webp"
+      }
     },
     {
       "id": "EmeraldImmortality",
       "title": "翡翠永生",
       "summary": "伊芙走进一片不肯老去的林地。",
       "region": "celtic",
-      "url": "../htmls/EmeraldImmortality.html"
+      "url": "../htmls/EmeraldImmortality.html",
+      "art": {
+        "image": "EmeraldImmortality.webp",
+        "position": [
+          45,
+          8
+        ],
+        "card_number": "4411101",
+        "card_name": "翡翠男爵 杰德 拜利兰",
+        "width": 1024,
+        "height": 1536,
+        "source": "drawings/王权纷争/王权纷争-人物/4411101.webp"
+      }
     },
     {
       "id": "BlackPineDinner",
       "title": "黑松家的晚宴",
       "summary": "旧庄园的银器与家族的秘密。",
       "region": "southg",
-      "url": "../htmls/BlackPineDinner.html"
+      "url": "../htmls/BlackPineDinner.html",
+      "art": {
+        "image": "BlackPineDinner.webp",
+        "position": [
+          50,
+          9
+        ],
+        "card_number": "4611101",
+        "card_name": "鲜血伯爵 休伯特 黑松",
+        "width": 1024,
+        "height": 1536,
+        "source": "drawings/王权纷争/王权纷争-人物/4611101.webp"
+      }
     },
     {
       "id": "PureChild",
       "title": "纯净之子",
       "summary": "一位巫师的探求，迎来自己的回应。",
       "region": "island",
-      "url": "../htmls/PureChild.html"
+      "url": "../htmls/PureChild.html",
+      "art": {
+        "image": "PureChild.webp",
+        "position": [
+          50,
+          5
+        ],
+        "card_number": "4011101",
+        "card_name": "纯净灵体 奥希斯",
+        "width": 1024,
+        "height": 1536,
+        "source": "drawings/王权纷争/王权纷争-人物/4011101.webp"
+      }
     },
     {
       "id": "RavenAndSparrow",
       "title": "鸦与雀",
       "summary": "同一座浮城里，兄弟选择不同道路。",
       "region": "northg",
-      "url": "../htmls/RavenAndSparrow.html"
+      "url": "../htmls/RavenAndSparrow.html",
+      "art": {
+        "image": "RavenAndSparrow.webp",
+        "position": [
+          45,
+          6
+        ],
+        "card_number": "4311002",
+        "card_name": "\"渡鸦\" 睿文",
+        "width": 1024,
+        "height": 1536,
+        "source": "drawings/基础包/基础包-人物/4311002.webp"
+      }
     },
     {
       "id": "AbyssReturner",
       "title": "深渊归来者",
       "summary": "多年之后，旧友从门的另一侧回来。",
       "region": "west",
-      "url": "../htmls/AbyssReturner.html"
+      "url": "../htmls/AbyssReturner.html",
+      "art": {
+        "image": "AbyssReturner.webp",
+        "position": [
+          50,
+          9
+        ],
+        "card_number": "4211201",
+        "card_name": "深渊归来者 多里安",
+        "width": 1024,
+        "height": 1536,
+        "source": "drawings/百家争鸣/百家争鸣-人物/4211201.webp"
+      }
     },
     {
       "id": "WinterNeedsNoKing",
       "title": "凛冬不需要国王",
       "summary": "极北的寒冰记着一场没有结束的战争。",
       "region": "north",
-      "url": "../htmls/WinterNeedsNoKing.html"
+      "url": "../htmls/WinterNeedsNoKing.html",
+      "art": {
+        "image": "WinterNeedsNoKing.webp",
+        "position": [
+          49,
+          9
+        ],
+        "card_number": "4211003",
+        "card_name": "凛冬城主 水晶心",
+        "width": 1024,
+        "height": 1536,
+        "source": "drawings/基础包/基础包-人物/4211003.webp"
+      }
     },
     {
       "id": "EmptyThrone",
       "title": "王座无人",
       "summary": "王宫长廊里的灯，照着空缺的王座。",
       "region": "celtic",
-      "url": "../htmls/EmptyThrone.html"
+      "url": "../htmls/EmptyThrone.html",
+      "art": {
+        "image": "EmptyThrone.webp",
+        "position": [
+          47,
+          10
+        ],
+        "card_number": "1111101",
+        "card_name": "无上女王 黛琳 凯尔特",
+        "width": 1024,
+        "height": 1536,
+        "source": "drawings/王权纷争/王权纷争-伙伴/1111101.webp"
+      }
     }
   ]
 }
