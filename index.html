@@ -1,40 +1,29 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="./style/style.css" />
-        <link rel="icon" href="./favicon.ico" type="image/x-icon" />
-        <title>奥术纪元</title>
-    </head>
-
-    <body>
-        <div id="base">
-            <div id="background_img"></div>
-            <div id="background_shader"></div>
-            <div id="title">
-                <span>奥术纪元</span>
-                <strong>Era of Arcane</strong>
-            </div>
-            <div id="markdown-content"></div>
-            <nav id="base-menu" class="menu" aria-label="主菜单"></nav>
-        </div>
-
-        <aside id="doc" aria-live="polite">
-            <div id="doc-title"></div>
-            <div id="doc-content"></div>
-            <button class="absolute-item" type="button" onclick="backToBase()">返回</button>
-        </aside>
-
-        <div id="frame">
-            <iframe src="" frameborder="0" id="iframe" title="奥术纪元内容"></iframe>
-            <div class="menu">
-                <button class="absolute-item" type="button" onclick="backToBase()">
-                    返回
-                </button>
-            </div>
-        </div>
-        <script src="./script/config.js"></script>
-        <script src="./script/main.js"></script>
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="奥术纪元：探索元素与诸神的世界，阅读旅人的故事，开启巫师之间的卡牌对决。" />
+    <meta name="theme-color" content="#111416" />
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="icon" href="favicon.ico" />
+    <title>奥术纪元 · Era of Arcane</title>
+    <script src="script/config.js" defer></script>
+    <script src="script/main.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#base-menu">跳至主菜单</a>
+    <main class="home" aria-labelledby="title">
+      <div class="home-title">
+        <h1 id="title">奥术纪元</h1>
+        <p>Era of Arcane</p>
+      </div>
+      <nav id="base-menu" class="home-menu" aria-label="主菜单" tabindex="-1"></nav>
+    </main>
+    <dialog id="community" aria-labelledby="community-title">
+      <div class="dialog-heading"><h2 id="community-title">加入我们</h2><button id="close-community" type="button" aria-label="关闭加入我们">关闭</button></div>
+      <img src="images/QRCode.JPG" alt="加入奥术纪元社群的二维码" width="400" />
+    </dialog>
+    <noscript><nav class="no-script" aria-label="快捷入口"><a href="world/">设定集</a><a href="htmls/rules.html">游戏规则</a><a href="https://yifeeeeei.github.io/ArcaneComposer/">卡牌一览</a></nav></noscript>
+  </body>
 </html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#111416" />
+  <title>$pagetitle$ · 奥术纪元</title>
+  <link rel="icon" href="../favicon.ico" />
+  <link rel="stylesheet" href="styles/gothic.css" />
+</head>
+<body>
+  <a class="skip" href="#content">跳至正文</a>
+  <header class="masthead">
+    <a href="../" class="brand" aria-label="返回奥术纪元主页"><img src="../world/assets/emblem.png" alt="" width="52" height="52" /><span>奥术纪元<small>ERA OF ARCANE</small></span></a>
+    <span class="edition">$section$</span>
+    <a href="../" class="home-link">返回主页 ↗</a>
+  </header>
+  <nav class="reader-nav" aria-label="阅读导航"><a href="rules.html">游戏规则</a><a href="Keywords.html">关键词一览</a></nav>
+  <div class="reader-layout">
+$if(toc)$
+    <aside class="reader-sidebar">
+      <details open>
+        <summary>本篇目录</summary>
+        <nav id="TOC" role="doc-toc" aria-label="本篇目录">$table-of-contents$</nav>
+      </details>
+      <a class="back-link" href="$back-url$">$back-label$ ↗</a>
+    </aside>
+$endif$
+    <main id="content" tabindex="-1">
+$if(art)$
+      <div class="reader-art"><img src="../world/assets/stories/$art$" alt="" style="object-position: $art-x$% $art-y$%" /><span>$section$</span></div>
+$endif$
+      <article class="prose" aria-label="$pagetitle$">
+$body$
+      </article>
+      <nav class="end-nav" aria-label="篇末导航"><a href="$back-url$">$back-label$ ↗</a><a href="#content">回到篇首 ↑</a></nav>
+    </main>
+  </div>
+  <footer class="site-footer"><span>ERA OF ARCANE</span><p>山海辽阔，故事仍在路上。</p><a href="../">奥术纪元主页</a><a href="../world/">设定集</a></footer>
+</body>
+</html>

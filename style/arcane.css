@@ -1,0 +1,212 @@
+@font-face {
+  font-family: Arcane;
+  src: url("../world/assets/fonts/noto-serif-sc.woff2") format("woff2");
+  font-weight: 200 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: Cinzel;
+  src: url("../world/assets/fonts/cinzel.woff2") format("woff2");
+  font-weight: 400 900;
+  font-display: swap;
+}
+:root {
+  color-scheme: dark;
+  --void: #0d1012;
+  --panel: #191d1d;
+  --panel-light: #242a28;
+  --gold: #c9ab70;
+  --bright: #ebd5a2;
+  --text: #ddd5c5;
+  --muted: #afa99c;
+  --line: #c9ab7045;
+  --soft: #c9ab7014;
+  --serif: Arcane, "Noto Serif SC", "Songti SC", SimSun, serif;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+body {
+  margin: 0;
+  background: var(--void);
+  color: var(--text);
+  font: 16px/1.85 var(--serif);
+  min-width: 320px;
+}
+body:before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(#0d1012e8, #0d1012f8),
+    url("../world/assets/royal-hall.png") center/cover;
+  z-index: -1;
+  pointer-events: none;
+}
+a {
+  color: var(--bright);
+  text-decoration: none;
+}
+a:hover {
+  color: #fff1cc;
+}
+button,
+input,
+select {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+button,
+a,
+input,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  color: var(--text);
+  background: #1b2020;
+  border: 1px solid var(--line);
+  padding: 8px 14px;
+  border-radius: 0;
+}
+button:hover {
+  border-color: var(--gold);
+  background: #30332b;
+}
+button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+input,
+select {
+  background: #111819;
+  color: var(--text);
+  border: 1px solid var(--line);
+  padding: 9px 12px;
+  min-width: 0;
+  border-radius: 0;
+}
+input::placeholder {
+  color: #9b998e;
+}
+:focus-visible {
+  outline: 2px solid var(--bright);
+  outline-offset: 4px;
+}
+button[aria-pressed="true"],
+a[aria-current="page"] {
+  color: var(--bright);
+  border-color: var(--gold);
+  background: #c9ab701c;
+}
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  line-height: 1.5;
+  color: #eee6d6;
+}
+h1 {
+  font-size: clamp(30px, 4vw, 50px);
+  letter-spacing: 0.12em;
+}
+h2 {
+  font-size: 25px;
+}
+h3 {
+  font-size: 19px;
+}
+p {
+  margin: 0 0 1.1em;
+}
+img {
+  max-width: 100%;
+}
+button svg {
+  width: 18px;
+  height: 18px;
+}
+small,
+.muted {
+  color: var(--muted);
+}
+.skip {
+  position: absolute;
+  left: 10px;
+  top: -100px;
+  background: #202929;
+  padding: 12px;
+  z-index: 20;
+}
+.skip:focus {
+  top: 10px;
+}
+.masthead {
+  max-width: 1512px;
+  padding: 25px 48px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin: auto;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: var(--bright);
+  font-size: 23px;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+}
+.brand img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+}
+.brand small {
+  display: block;
+  font-family: Cinzel, serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+}
+.edition {
+  border-left: 1px solid var(--line);
+  padding-left: 30px;
+  color: var(--muted);
+  font-size: 17px;
+}
+.home-link {
+  margin-left: auto;
+  font-size: 13px;
+}
+
+.site-footer {
+  padding: 32px 24px;
+  border-top: 1px solid var(--line);
+  text-align: center;
+  color: var(--muted);
+  background: #101517;
+}
+.site-footer span { font: 12px Cinzel, serif; color: var(--gold); letter-spacing: .22em; }
+.site-footer p { margin: 10px 0; font-size: 13px; }
+.site-footer a { margin: 0 12px; font-size: 13px; }
+@media (max-width: 760px) {
+  body { font-size: 15px; }
+  .masthead { padding: 18px 20px; gap: 18px; }
+  .brand { font-size: 19px; gap: 11px; }
+  .brand img { width: 42px; height: 42px; }
+  .brand small { font-size: 8px; }
+  .edition { font-size: 13px; padding-left: 18px; }
+  .home-link { font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
