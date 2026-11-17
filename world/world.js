@@ -273,6 +273,10 @@ function setupAtlas() {
   );
 }
 
+function eraIllustration(era, className, decorative = false) {
+  const art = era.art;
+  return `<img class="${className}" src="assets/eras/${esc(art.image)}" alt="${decorative ? "" : esc(art.alt)}" width="${art.width}" height="${art.height}" loading="${decorative ? "lazy" : "eager"}" decoding="async" style="object-position:${art.position[0]}% ${art.position[1]}%">`;
+}
 function renderChronicle(eraID, personID) {
   const era = data.eras.find((e) => e.id === eraID) || data.eras[0];
   const index = data.eras.indexOf(era),
@@ -282,7 +286,7 @@ function renderChronicle(eraID, personID) {
   );
   return (
     heading("III · CHRONICLE", "往世纪事", "翻过一个时代，再听一段远行。") +
-    `<nav class="era-tabs" aria-label="时代">${data.eras.map((e, i) => `<a href="#chronicle/${e.id}${person ? "/" + person.id : ""}" ${e.id === era.id ? 'aria-current="page"' : ""}><small>${roman[i]} · ${esc(e.subtitle)}</small><strong>${esc(e.title)}</strong></a>`).join("")}</nav><label for="chronicle-person" class="muted">翻阅： </label><select id="chronicle-person"><option value="">世界与人物</option>${data.people.map((p) => `<option value="${p.id}" ${p.id === person?.id ? "selected" : ""}>${esc(p.name)}</option>`).join("")}</select><div class="chronicle-lead"><div><h2>${esc(era.title)}</h2><p>${esc(era.intro)}</p></div><div class="era-turn"><button id="era-prev" ${index === 0 ? "disabled" : ""} aria-label="前一个时代">←</button><button id="era-next" ${index === data.eras.length - 1 ? "disabled" : ""} aria-label="后一个时代">→</button></div></div><section class="event-list" aria-label="时代事件">${events.length ? events.map((e) => `<article class="event"><span class="when">${esc(e.when)}</span><h3>${esc(e.title)}</h3><p>${esc(e.text)}</p>${e.chapter ? link("#lore/" + e.chapter, "阅读设定 →") : ""}${e.region ? link(featureRoute(e.region, e.feature), "在地图中查看 →") : ""}${e.person ? link("#people/" + e.person, "人物足迹 →") : ""}${e.story ? storyLinks([e.story]) : ""}</article>`).join("") : `<article class="event"><h3>这位旅人尚未启程</h3><p>他的足迹留在更晚的时代。</p>${link("#chronicle/voyages/" + person.id, "翻至海路与远行 →")}</article>`}</section>`
+    `<nav class="era-tabs" aria-label="时代">${data.eras.map((e, i) => `<a href="#chronicle/${e.id}${person ? "/" + person.id : ""}" ${e.id === era.id ? 'aria-current="page"' : ""}>${eraIllustration(e, "era-tab-art", true)}<span class="era-tab-copy"><small>${roman[i]} · ${esc(e.subtitle)}</small><strong>${esc(e.title)}</strong></span></a>`).join("")}</nav><label for="chronicle-person" class="muted">翻阅： </label><select id="chronicle-person"><option value="">世界与人物</option>${data.people.map((p) => `<option value="${p.id}" ${p.id === person?.id ? "selected" : ""}>${esc(p.name)}</option>`).join("")}</select><div class="chronicle-lead">${eraIllustration(era, "era-art")}<div class="era-copy"><h2>${esc(era.title)}</h2><p>${esc(era.intro)}</p></div><div class="era-turn"><button id="era-prev" ${index === 0 ? "disabled" : ""} aria-label="前一个时代">←</button><button id="era-next" ${index === data.eras.length - 1 ? "disabled" : ""} aria-label="后一个时代">→</button></div></div><section class="event-list" aria-label="时代事件">${events.length ? events.map((e) => `<article class="event"><span class="when">${esc(e.when)}</span><h3>${esc(e.title)}</h3><p>${esc(e.text)}</p>${e.chapter ? link("#lore/" + e.chapter, "阅读设定 →") : ""}${e.region ? link(featureRoute(e.region, e.feature), "在地图中查看 →") : ""}${e.person ? link("#people/" + e.person, "人物足迹 →") : ""}${e.story ? storyLinks([e.story]) : ""}</article>`).join("") : `<article class="event"><h3>这位旅人尚未启程</h3><p>他的足迹留在更晚的时代。</p>${link("#chronicle/voyages/" + person.id, "翻至海路与远行 →")}</article>`}</section>`
   );
 }
 function setupChronicle(eraID, personID) {
@@ -421,7 +425,7 @@ async function start() {
   if (new URLSearchParams(location.search).get("embed") === "1")
     document.body.classList.add("embedded");
   try {
-    const response = await fetch("data.json?v=illustrated-20261116");
+    const response = await fetch("data.json?v=era-gallery-20261116");
     if (!response.ok) throw new Error("Setting data unavailable");
     data = await response.json();
     render();

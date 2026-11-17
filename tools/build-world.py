@@ -42,6 +42,12 @@ def build():
                 raise ValueError(f'Place outside map: {place["name"]}')
     for obj in data['events'] + data['people'] + data['stories']:
         check_ref(obj)
+    for era in data['eras']:
+        art = era.get('art')
+        if not art or not (ROOT/'world/assets/eras'/art['image']).is_file():
+            raise ValueError(f'Missing era artwork: {era["id"]}')
+        if len(art['position']) != 2 or any(not 0 <= value <= 100 for value in art['position']):
+            raise ValueError(f'Invalid era artwork position: {era["id"]}')
     for story in data['stories']:
         if not (ROOT/'world'/story['url']).is_file():
             raise ValueError(f'Missing story: {story["url"]}')
