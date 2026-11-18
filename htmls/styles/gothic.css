@@ -1,6 +1,12 @@
 @import url("../../style/arcane.css");
 
 .reader-nav { display: flex; justify-content: center; gap: 32px; border-block: 1px solid var(--line); background: #101516ed; padding: 13px 20px; font-size: 14px; }
+
+.setting-nav { display: flex; justify-content: center; gap: 8px; border-block: 1px solid var(--line); background: #101516ed; }
+.setting-nav a { padding: 15px 26px; color: var(--text); font-size: 16px; border-bottom: 2px solid transparent; white-space: nowrap; }
+.setting-nav a[aria-current="page"] { border-bottom-color: var(--gold); }
+.setting-nav span { font-family: Cinzel, serif; font-size: 11px; margin-right: 11px; color: var(--gold); }
+
 .reader-layout { display: grid; grid-template-columns: 240px minmax(0, 860px); justify-content: center; gap: 54px; max-width: 1400px; margin: auto; padding: 44px 48px 70px; align-items: start; }
 .reader-sidebar { position: sticky; top: 28px; font-size: 13px; }
 .reader-sidebar details { border: 1px solid var(--line); background: #141b1bd9; }
@@ -48,6 +54,9 @@ main { min-width: 0; outline: none; }
 }
 @media (max-width: 760px) {
   .masthead .edition { display: none; }
+  .setting-nav { gap: 0; justify-content: flex-start; overflow-x: auto; scrollbar-width: thin; }
+  .setting-nav a { font-size: 13px; padding: 12px 16px; flex: 1; text-align: center; }
+  .setting-nav span { display: none; }
   .reader-nav { gap: 24px; font-size: 13px; }
   .reader-layout { display: block; padding: 24px 20px 44px; }
   .reader-sidebar { position: static; margin-bottom: 28px; }
@@ -59,7 +68,7 @@ main { min-width: 0; outline: none; }
 }
 @media print {
   body { background: white; color: black; }
-  body::before, .masthead, .reader-nav, .reader-sidebar, .reader-art, .end-nav, .site-footer, .skip { display: none; }
+  body::before, .masthead, .reader-nav, .setting-nav, .reader-sidebar, .reader-art, .end-nav, .site-footer, .skip { display: none; }
   .reader-layout { display: block; padding: 0; }
   .prose { max-width: none; font-size: 12pt; }
   .prose h1, .prose h2, .prose h3, .prose strong, .prose a { color: black; }

@@ -35,6 +35,8 @@ def build():
             'back-url': '../world/#stories' if story else '../',
             'back-label': '返回故事长廊' if story else '返回主页',
         }
+        if story:
+            metadata['story-nav'] = 'true'
         if story and story.get('art'):
             art = story['art']
             metadata.update({'art': art['image'], 'art-x': str(art['position'][0]), 'art-y': str(art['position'][1])})
